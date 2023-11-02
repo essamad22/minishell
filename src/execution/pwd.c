@@ -1,5 +1,4 @@
-#include "minishell.h"
-
+#include "execution.h"
 char	*getz(void)
 {
 	char	*s;

@@ -1,5 +1,4 @@
-#include "minishell.h"
-
+#include "execution.h"
 // // utils
 
 // int lst_size1(t_data *node)

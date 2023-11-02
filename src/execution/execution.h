@@ -1,7 +1,7 @@
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef EXECUTION_H
+# define EXECUTION_H
 
-#include "/Users/nasrollahkhachabi/Desktop/mini_shell/execution/libft/libft.h"
+#include "/Users/nasrollahkhachabi/Desktop/minishell2/src/execution/libft"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
