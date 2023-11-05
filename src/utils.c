@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:32:16 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/02 16:46:51 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/05 12:57:24 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,20 @@ void    ft_free_2d(char **str)
     free(str);
 }
 
-void    clear_data(t_cmd_tab **tmp)
-{
-    t_cmd_tab *tmp2;
-    while ((*tmp))
-    {
-        ft_free_2d((*tmp)->cmd);
-        if ((*tmp)->redirs)
-            free_redir(&(*tmp)->redirs);
-        tmp2 = (*tmp);
-        (*tmp) = (*tmp)->next;
-        free(tmp2);
-    }
-    free(*tmp);
-}
+// void    clear_data(t_cmd_tab **tmp)
+// {
+//     t_cmd_tab *tmp2;
+//     while ((*tmp))
+//     {
+//         ft_free_2d((*tmp)->cmd);
+//         if ((*tmp)->redirs)
+//             free_redir(&(*tmp)->redirs);
+//         tmp2 = (*tmp);
+//         (*tmp) = (*tmp)->next;
+//         free(tmp2);
+//     }
+//     free(*tmp);
+// }
 
 int len_of_cmd(t_item *token)
 {

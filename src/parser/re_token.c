@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   re_token.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 01:20:22 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/10/30 00:10:22 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/02 18:01:40 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void    delete_spaces(t_item **tokens)
     tmp = *tokens;
     while (tmp)
     {
-        if (tmp->type == SPACE && tmp->state == GENERAL)
+        if (tmp->type == SPAC && tmp->state == GENERAL)
         {
             holder = tmp;
             tmp->prev->next = tmp->next;

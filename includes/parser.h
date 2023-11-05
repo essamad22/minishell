@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:21:54 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/02 16:39:49 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/05 12:26:30 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,20 @@ typedef struct s_redir
     struct s_redir  *next;
 }   t_redir;
 
+typedef struct s_file	t_file;
+
+struct s_file
+{
+	char	*file_name;
+	int		type;
+	t_file	*next;
+};
+
 typedef struct s_cmd_tab
 {
     char                **cmd;
     t_redir             *redirs;
+    t_file              *file;
     int                 is_pipe;
     // int                 len;
     struct s_cmd_tab    *next;
@@ -38,6 +48,7 @@ typedef struct s_env_list
     char                *value;
     struct s_env_list   *next;
 }   t_env_list;
+
 
 t_cmd_tab   *command_tab(char *cmd_line);
 int         cmd_len(t_item *tokens);

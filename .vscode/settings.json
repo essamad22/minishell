@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "execution.h": "c",
+        "minishell.h": "c",
+        "parser.h": "c"
+    }
+}
