@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:33:53 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/02 16:46:19 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/04 00:30:41 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_cmd_tab   *command_tab(char *cmd_line)
     // printf("after check quots\n");
     remove_quotes(&tokens);
     fill_cmd(&tokens, &cmd_tab);
-    // print_tokens(tokens);
+    print_tokens(tokens);
     clear_tokens(&tokens);
     print_cmd_tab(&cmd_tab);
     return (cmd_tab);
