@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:39:52 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/10/31 02:15:36 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/06 08:10:40 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef enum e_tokens
     SPAC = ' ',
     BACK_SLASH = '\\',
     APPEND,
-    HEREDOC
+    HEREDOC,
+    END
 }   t_tokens;
 
 typedef enum e_states

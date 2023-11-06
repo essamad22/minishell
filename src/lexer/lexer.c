@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:15:00 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/10/10 20:39:36 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/06 16:52:50 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ t_item		*lexer(char *line)
     i = 0;
     while (line[i])
         i += get_token(&head, line + i, &stat);
+    head->tail->next = new_item(NULL, 0, END, stat);
     return (head);
 }

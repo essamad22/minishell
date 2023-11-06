@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:32:16 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/05 12:57:24 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/06 10:28:46 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int len_of_cmd(t_item *token)
         return (0);
     while (token)
     {
-        if (token->type == WORD && token->state == GENERAL)
+        if (token->type == WORD && (token->state == GENERAL 
+            || token->state == IN_QUOTE || token->state == IN_DQUOTE))
             len++;
         else
             return (len);

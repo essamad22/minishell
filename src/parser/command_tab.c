@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:33:53 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/05 13:03:49 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/06 10:15:01 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ t_cmd_tab   *command_tab(char *cmd_line)
     delete_spaces(&tokens);
     // printf("after check quots\n");
     remove_quotes(&tokens);
-    fill_cmd(&tokens, &cmd_tab);
     // print_tokens(tokens);
+    fill_cmd(&tokens, &cmd_tab);
     clear_tokens(&tokens);
-    print_cmd_tab(&cmd_tab);
+    //print_cmd_tab(&cmd_tab);
     return (cmd_tab);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:41:40 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/10/29 21:51:54 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/06 17:04:48 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,29 @@ int d_quote(t_item **list, int *stat, int type)
 
 void    check_quote(t_item **tokens)
 {
+    t_item  *tmp;
+    int     i;
+    int     j;
+
+    tmp = *tokens;
+    i = 0;
+    j = 0;
+    while (tmp)
+    {
+        if (tmp->type == DQUOTE && tmp->state == GENERAL)
+            i++;
+        else if (tmp->type == QUOTE && tmp->state == GENERAL)
+            j++;
+        tmp = tmp->next;
+    }
+    if (i % 2 != 0)
+        exit (printf("minishell: syntax error near unexpected token'\"'\n"));
+    if (j % 2 != 0)
+        exit (printf ("minishell: syntax error near unexpected token '\'\n"));
     if ((*tokens)->tail->state == IN_DQUOTE)
-    {
         exit(printf("minishell: syntax error near unexpected token `\"'\n"));
-    }
     else if ((*tokens)->tail->state == IN_QUOTE)
-    {
         exit(printf("minishell: syntax error near unexpected token `'\''\n"));
-    }
     else
         return (join_in_quots(&(*tokens)));
 }

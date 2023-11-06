@@ -6,7 +6,7 @@
 #    By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/02 21:21:50 by aakhtab           #+#    #+#              #
-#    Updated: 2023/11/02 17:01:54 by aakhtab          ###   ########.fr        #
+#    Updated: 2023/11/06 07:42:57 by aakhtab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS			=	src/main.c src/lexer/lexer.c src/lexer/tokens.c 	\
 
 OBJS			=	$(SRCS:.c=.o)
 
-CFLAGS			=	-Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror -g3 #-fsanitize=address
 
 NAME			=	minishell
 
