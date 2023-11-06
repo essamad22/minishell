@@ -1,20 +1,20 @@
 
 #include "../../includes/minishell.h"
 
-int	*out_file(t_file *file,	int *fd)
+int	*out_file(t_redir *file,	int *fd)
 {
-	if (file->type == 2)
+	if (file->type == GREAT	)
 	{
-		fd[1] = open(file->file_name, O_RDWR | O_CREAT | O_TRUNC, 0644);
+		fd[1] = open(file->redirect, O_RDWR | O_CREAT | O_TRUNC, 0644);
 		if (fd[1] < 0)
 		{
 			ft_error("minishell: No such file or directory\n", 1);
 			return (NULL);
 		}
 	}
-	if (file->type == 4)
+	if (file->type == APPEND)
 	{
-		fd[1] = open(file->file_name, O_RDWR | O_CREAT | O_APPEND, 0644);
+		fd[1] = open(file->redirect, O_RDWR | O_CREAT | O_APPEND, 0644);
 		if (fd[1] < 0)
 		{
 			ft_error("minishell: No such file or directory\n", 1);
@@ -24,12 +24,12 @@ int	*out_file(t_file *file,	int *fd)
 	return (fd);
 }
 
-int	*openfile_ut(t_file *file,	int *fd)
+int	*openfile_ut(t_redir *file,	int *fd)
 {
 	fd = out_file(file, fd);
-	if (file->type == 3)
+	if (file->type == LESS)
 	{
-		fd[0] = open(file->file_name, O_RDONLY, 0644);
+		fd[0] = open(file->redirect, O_RDONLY, 0644);
 		if (fd[0] < 0)
 		{
 			ft_error("minishell: No such file or directory\n", 1);
@@ -37,7 +37,7 @@ int	*openfile_ut(t_file *file,	int *fd)
 		}
 	}
 	if (file->type == 5 && g_data.exitheredoc != 1)
-		fd[0] = heredoc(file->file_name);
+		fd[0] = heredoc(file->redirect);
 	return (fd);
 }
 
@@ -45,10 +45,10 @@ int	*openfile(t_cmd_tab *list)
 {
 	int		*fd;
 	t_cmd_tab	*tmp;
-	t_file	*fl;
+	t_redir	*fl;
 
 	tmp = list;
-	fl = tmp->file;
+	fl = tmp->redirs;
 	fd = malloc(sizeof(int) * 2);
 	fd[0] = 0;
 	fd[1] = 0;

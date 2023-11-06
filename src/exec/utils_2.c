@@ -4,10 +4,10 @@
 void	closepipe_andwait(t_exec_p *exec, t_v *v)
 {
 	v->i = 0;
-	while (v->i < v->pipe_num * 2)
+	while (v->i < v->is_pipe * 2)
 		close(exec->p[v->i++]);
 	v->i = 0;
-	while (v->i < v->pipe_num)
+	while (v->i < v->is_pipe)
 	{
 		waitpid(0, &v->status, 0);
 		if (!in_builtin(v->tmp))

@@ -69,15 +69,15 @@ void	*exec_pipe(t_cmd_tab *list, t_vr *vr)
 	v.tmp = list;
 	exec = malloc(sizeof(t_exec_p));
 	exec->cmdnbr = 0;
-	v.pipe_num = ft_lstlen(list);
-	exec->p = malloc(sizeof(int) * v.pipe_num * 2);
+	v.is_pipe = ft_lstlen(list);
+	exec->p = malloc(sizeof(int) * v.is_pipe * 2);
 	v.i = -1;
-	while (++v.i < v.pipe_num)
+	while (++v.i < v.is_pipe)
 		pipe(exec->p + v.i * 2);
 	exec->fd_in = 0;
 	while (list)
 	{
-		exec_pipe_ut(list, exec, vr, v.pipe_num);
+		exec_pipe_ut(list, exec, vr, v.is_pipe);
 		list = list->next;
 		exec->cmdnbr++;
 		free(exec->fd);
