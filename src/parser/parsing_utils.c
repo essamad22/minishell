@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 10:22:59 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/02 16:40:45 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/06 10:37:24 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ char    **creat_cmd(t_item *token)
     int     len;
 
     len = len_of_cmd(token);
-    cmd = (char **)malloc(sizeof(char *) * (len + 1));
+    cmd = (char **)calloc(sizeof(char *) , (len + 1));
+    if (!cmd)
+        return (NULL);
     return (cmd);
 }
 
@@ -98,11 +100,9 @@ t_cmd_tab *new_cmd(t_item *token, int *pipe)
             *pipe += 1;
             break;
         }
-        else if (tmp->type == WORD && tmp->state == GENERAL)
-        {
+        else if (tmp->type == WORD && (tmp->state == GENERAL 
+            || tmp->state == IN_QUOTE || tmp->state == IN_DQUOTE))
             cmd_tab->cmd[i++] = ft_strdup(tmp->content);
-            cmd_tab->cmd[i] = NULL;
-        }
         else if (tmp->type == HEREDOC || tmp->type == APPEND 
             || tmp->type == GREAT || tmp->type == LESS)
         {

@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:01:28 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/02 01:18:26 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:28:56 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int main(int ac, char **av, char **env)
         if (ft_strncmp(line, "exit", 5) == 0)
         {
             free(line);
-            clear_data(&cmd_tab);
+            // clear_data(&cmd_tab);
             free(cmd_tab);
             exit(0);
         }
@@ -56,7 +56,7 @@ int main(int ac, char **av, char **env)
         if (cmd_tab == NULL)
             break;
         free(line);
-        clear_data(&cmd_tab);
+        // clear_data(&cmd_tab);
         free(cmd_tab);
     }
     return (0);

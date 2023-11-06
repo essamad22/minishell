@@ -83,17 +83,17 @@ int main(int ac, char **av, char **env)
         if (line == NULL)
             break;
         add_history(line);
-        if (ft_strncmp(line, "exit", 5) == 0)
+        // this line for remove spaces from the begining and the end of the line
+        line = ft_strtrim(line, " ");
+        // ------------------------------
+        // this if for check if the line is empty or not to not segfault because of EMPTY LINE
+        if (ft_strlen(line) != 0)
         {
-            free(line);
-            clear_data(&cmd_tab);
-            free(cmd_tab);
-            exit(0);
+            cmd_tab = command_tab(line);
+            if (cmd_tab == NULL)
+                break;
+            exec_pipe(cmd_tab, vr);
         }
-        cmd_tab = command_tab(line);
-        exec_pipe(cmd_tab, vr);
-        if (cmd_tab == NULL)
-            break;
         free(line);
         clear_data(&cmd_tab);
         free(cmd_tab);

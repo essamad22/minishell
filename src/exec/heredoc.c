@@ -75,7 +75,7 @@ void	echo(t_cmd_tab *list, int fd)
 	int	flag;
 
 	flag = 0;
-	if (!ft_strncmp(list->cmd[1], "-n", 2))
+	if (list->cmd[1] && !ft_strncmp(list->cmd[1], "-n", 2))
 	{
 		i = 0;
 		while (list->cmd[++i])
