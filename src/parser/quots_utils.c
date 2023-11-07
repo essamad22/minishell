@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 16:26:40 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/10/30 00:14:55 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/07 23:37:32 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ void    join_in_quots(t_item **tokens)
                 tmp->content = ft_strjoin(tmp->content, tmp->next->content);
                 tmp->len = ft_strlen(tmp->content);
                 holder = tmp->next;
-                tmp->next = tmp->next->next;
-                tmp->next->prev = tmp;
-                free(holder->content);
-                free(holder);
+                rm_item(&holder);
             }
+            tmp->type = WORD;
         }
         tmp = tmp->next;
     }
