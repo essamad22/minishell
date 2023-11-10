@@ -6,7 +6,7 @@
 /*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:01:17 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 03:03:39 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/10 06:17:29 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,6 @@ typedef struct s_data
     int         heredoc;
     char			*content; // added by Nasro
 	int	exitheredoc;
-	int exitcode;
 	int	quit_flag;
 	int	here_doc_flag;
 	int	rd_error;

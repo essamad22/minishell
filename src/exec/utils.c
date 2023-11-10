@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:23 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 03:48:24 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/10 06:17:47 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error(char *msg, int exit_code)
 {
 	ft_putstr_fd(msg, 2);
-	g_data.exitcode = exit_code;
+	g_data.exit_status = exit_code;
 }
 
 int	ft_lstlen(t_cmd_tab *lst)

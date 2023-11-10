@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:07 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 03:48:08 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/10 06:17:47 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,5 @@ void	echo(t_cmd_tab *list, int fd)
 	}
 	else
 		print_echo(list->cmd, fd);
-	g_data.exitcode = 0;
+	g_data.exit_status = 0;
 }

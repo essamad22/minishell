@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:22 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 03:47:24 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/10 06:17:47 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	env2(char **cmd, t_vr *vr, int fd)
 			}
 		}
 	}
-	g_data.exitcode = 0;
+	g_data.exit_status = 0;
 }
 
 t_vr	*exec_builtin(t_cmd_tab *list, t_vr *vr, int fd)
@@ -100,8 +100,8 @@ int	ft_exit_2(t_cmd_tab *list)
 		if (!ft_atoi(list->cmd[i]))
 		{
 			printf("exit\nexit : numeric argument required\n");
-			g_data.exitcode = 255;
-			exit (g_data.exitcode);
+			g_data.exit_status = 255;
+			exit (g_data.exit_status);
 		}
 		else if (ft_atoi(list->cmd[i]) && !list->cmd[i + 1])
 		{
@@ -126,6 +126,6 @@ void	ft_exit(t_cmd_tab *list)
 	if (i == 1)
 	{
 		printf("exit\n");
-		exit(g_data.exitcode);
+		exit(g_data.exit_status);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 03:47:57 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/10 06:17:47 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	export(t_cmd_tab *list, t_vr *vr, int fd)
 			print_export(vr->env[j], fd);
 			ft_putstr_fd("\n", fd);
 		}
-		g_data.exitcode = 0;
+		g_data.exit_status = 0;
 	}
 }
 
@@ -98,5 +98,5 @@ void	check_exp_env(char *cmd, t_vr *vr)
 	else if (!ft_isalpha(cmd[0]) || !check_cmd(word))
 		ft_error("not a valid identifier\n", 1);
 	free (word);
-	g_data.exitcode = 0;
+	g_data.exit_status = 0;
 }

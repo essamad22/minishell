@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:19 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 03:48:20 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/10 06:17:47 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	closepipe_andwait(t_exec_p *exec, t_v *v)
 	{
 		waitpid(0, &v->status, 0);
 		if (!in_builtin(v->tmp))
-			g_data.exitcode = WEXITSTATUS(v->status);
+			g_data.exit_status = WEXITSTATUS(v->status);
 		v->tmp = v->tmp->next;
 		v->i++;
 	}

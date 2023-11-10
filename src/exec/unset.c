@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:14 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 03:48:15 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/10 06:17:47 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_vr	*unset(char **cmd, t_vr *vr)
 		}
 		vr->env = unset_ut(cmd[i], vr->env, ft_strlen(cmd[i]));
 	}
-	g_data.exitcode = 0;
+	g_data.exit_status = 0;
 	return (vr);
 }
 

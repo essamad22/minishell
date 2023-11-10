@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:14 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 03:47:15 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/10 06:17:47 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	cd(t_cmd_tab *list, t_vr *vr)
 		return ;
 	}
 	change_pwdenv(oldpwd, vr);
-	g_data.exitcode = 0;
+	g_data.exit_status = 0;
 }
 
 void	pwd(int fd)
@@ -65,7 +65,7 @@ void	pwd(int fd)
 	{
 		ft_putstr_fd(cwd, fd);
 		ft_putstr_fd("\n", fd);
-		g_data.exitcode = 0;
+		g_data.exit_status = 0;
 	}
 }
 

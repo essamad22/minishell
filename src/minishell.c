@@ -23,7 +23,7 @@ void    set_data(int ac, char **av, char **env)
 void	handle_sigint(int sigint)
 {
 	(void) sigint;
-	g_data.exitcode = 1;
+	g_data.exit_status = 1;
 	if (g_data.flag)
 	{
 		g_data.exitheredoc = 1;
@@ -44,7 +44,7 @@ void	handle_sigint(int sigint)
 t_vr	*init_vr(char **env)
 {
 	g_data.fd = dup(0);
-	g_data.exitcode = 0;
+	g_data.exit_status = 0;
 	signal(SIGINT, &handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
 	return (fill_env2(env));
