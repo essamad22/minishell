@@ -6,43 +6,43 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:32:16 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/06 10:28:46 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/10 06:00:28 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int ft_isenv(int c)
+int	ft_isenv(int c)
 {
-    if (ft_isalnum(c))
-        return (1);
-    if (c == '_' || c == '?')
-        return (1);
-    else 
-        return (0);
+	if (ft_isalnum(c))
+		return (1);
+	if (c == '_' || c == '?')
+		return (1);
+	else
+		return (0);
 }
 
-int strlen_2d(char **str)
+int	strlen_2d(char **str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-void    ft_free_2d(char **str)
+void	ft_free_2d(char **str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-    {
-        free(str[i]);
-        i++;
-    }
-    free(str);
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }
 
 // void    clear_data(t_cmd_tab **tmp)
@@ -60,35 +60,35 @@ void    ft_free_2d(char **str)
 //     free(*tmp);
 // }
 
-int len_of_cmd(t_item *token)
+int	len_of_cmd(t_item *token)
 {
-    int len;
+	int	len;
 
-    len = 0;
-    if (!token)
-        return (0);
-    while (token)
-    {
-        if (token->type == WORD && (token->state == GENERAL 
-            || token->state == IN_QUOTE || token->state == IN_DQUOTE))
-            len++;
-        else
-            return (len);
-        token = token->next;
-    }
-    return (len);
+	len = 0;
+	if (!token)
+		return (0);
+	while (token)
+	{
+		if (token->type == WORD && (token->state == GENERAL
+				|| token->state == IN_QUOTE || token->state == IN_DQUOTE))
+			len++;
+		else
+			return (len);
+		token = token->next;
+	}
+	return (len);
 }
 
-void free_redir(t_redir **redir)
+void	free_redir(t_redir **redir)
 {
-    t_redir *tmp;
+	t_redir	*tmp;
 
-    while ((*redir))
-    {
-        free((*redir)->redirect);
-        tmp = (*redir);
-        (*redir) = (*redir)->next;
-        free(tmp);
-    }
-    free(*redir);
+	while ((*redir))
+	{
+		free((*redir)->redirect);
+		tmp = (*redir);
+		(*redir) = (*redir)->next;
+		free(tmp);
+	}
+	free(*redir);
 }

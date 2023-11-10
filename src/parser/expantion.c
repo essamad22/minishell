@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 10:46:02 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/10/27 02:50:06 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/10 04:57:44 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 int expand(t_item **tokens)
 {
     t_env_list  *env_lst;
+
+    if ((*tokens)->prev && (*tokens)->prev->type == HEREDOC)
+    {
+        (*tokens)->type = WORD;
+        return (0);
+    }
     if ((*tokens)->content[0] == '$' && (*tokens)->content[1] == '?')
     {
         free((*tokens)->content);

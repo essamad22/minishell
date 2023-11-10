@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:39:52 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/06 21:03:11 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/10 04:36:50 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_item
     int         len;
     bool        is_ambiguous;
     t_tokens    type;
+    t_tokens    redir_type;
     t_states    state;
     struct s_item   *next;
     struct s_item   *prev;
