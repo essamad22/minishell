@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/10 03:48:39 by aakhtab           #+#    #+#             */
+/*   Updated: 2023/11/10 03:49:40 by aakhtab          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef EXECUTION_H
 # define EXECUTION_H
 
@@ -32,21 +44,21 @@
 
 //New Structs
 
-typedef struct s_redir
-{
-    char            *redirect;
-    int             type;
-    struct s_redir  *next;
-}   t_redir;
+// typedef struct s_redir
+// {
+//     char            *redirect;
+//     int             type;
+//     struct s_redir  *next;
+// }   t_redir;
 
-typedef struct s_cmd_tab
-{
-    char                **cmd;
-    t_redir             *redirs;
-    int                 is_pipe;
-    // int                 len;
-    struct s_cmd_tab    *next;
-}           t_cmd_tab;
+// typedef struct s_cmd_tab
+// {
+//     char                **cmd;
+//     t_redir             *redirs;
+//     int                 is_pipe;
+//     // int                 len;
+//     struct s_cmd_tab    *next;
+// }           t_cmd_tab;
 
 typedef struct shell
 {
@@ -88,25 +100,25 @@ typedef struct s_global
 	t_env		*export;
 }			t_global;
 
-int	strlenhtal(char *s);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putchar_fd(char c, int fd);
-int	ft_strcmp(const char *s1, const char *s2);
-int	ft_strlen1(const char *s);
+int     strlenhtal(char *s);
+void    ft_putstr_fd(char *s, int fd);
+void    ft_putchar_fd(char c, int fd);
+int     ft_strcmp(const char *s1, const char *s2);
+int     ft_strlen1(const char *s);
 char	*ft_strjoin10(char *s1, char *s2);
 char	*getz(void);
 char	*getpwd(void);
 void	printerr(char *s1, char *s2, char *s3);
 char	*ft_strjoin1(char *s1, char *s2);
-int	checktossawiplace(char *s);
+int     checktossawiplace(char *s);
 char	*bringbeforetossawi(char *s);
 char	*bringaftertossawi(char *s);
 void	ft_exit(t_cmd_tab *cmd);
 // int	ft_cd(t_list *p, t_data **data);
 // void	ft_export(t_list *p, t_data **data, t_info *info);
 // int	ft_unset(t_list *p, t_data **data);
-void one_cmd(int argc, char *argv[], char **envp);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+void    one_cmd(int argc, char *argv[], char **envp);
+// int     ft_strncmp(const char *s1, const char *s2, size_t n);
 
 
 

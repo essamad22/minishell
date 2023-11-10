@@ -1,5 +1,5 @@
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
 t_data  g_data;
 
