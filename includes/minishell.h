@@ -6,7 +6,7 @@
 /*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:01:17 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/05 13:19:13 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/10 03:03:39 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 
 typedef struct s_v
 {
-	int			pipe_num;
+	int			is_pipe;
 	t_cmd_tab		*tmp;
 	void		*exec;
 	int			i;
@@ -52,7 +52,6 @@ typedef struct s_v
 	int			fd[2];
 
 }	t_v;
-
 
 
 // t_data	g_data;
@@ -86,8 +85,8 @@ t_vr	*exec_builtin(t_cmd_tab *list, t_vr *vr, int fd);
 int	ft_exit_2(t_cmd_tab *list);
 void	ft_exit(t_cmd_tab *list);
 void	print_n_echo(char **cmd, int fd, int i);
-int	*out_file(t_file *file,	int *fd);
-int	*openfile_ut(t_file *file,	int *fd);
+int	*out_file(t_redir *file,	int *fd);
+int	*openfile_ut(t_redir *file,	int *fd);
 int	*openfile(t_cmd_tab *list);
 void	ft_execve(t_cmd_tab *list, t_vr *vr, char *cmderr);
 char	*ft_getpath(char **envp);

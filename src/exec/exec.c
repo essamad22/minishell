@@ -63,6 +63,7 @@ void	*exec_pipe(t_cmd_tab *list, t_vr *vr)
 {
 	t_exec_p	*exec;
 	t_v			v;
+	int i=0;
 
 	if (!list)
 		return (NULL);
