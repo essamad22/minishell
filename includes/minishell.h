@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:01:17 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 05:04:26 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/11 22:17:41 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ typedef struct s_data
 	t_vr 		*export;
     int         exit_status;
     int         heredoc;
+    int         syntax_error;
     char			*content; // added by Nasro
 	int	exitheredoc;
 	int	quit_flag;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 18:57:12 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/11 20:22:38 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,19 @@ void	check_exp_env(char *cmd, t_vr *vr)
 	}
 	else if (ft_strnstr(cmd, "+=", ft_strlen(cmd)))
     {
+        char *delimeter = ft_strnstr(cmd, "+=", ft_strlen(cmd));
+        char *tmp = cmd;
+        while(tmp && tmp != delimeter)
+        {
+            if(*tmp == '+')
+            {
+                ft_error("not a valid identifier\n", 1);
+	            free (word);
+	            g_data.exit_status = 1;
+                return ;
+            }
+            tmp++;
+        }
         char *trimedWord = ft_strtrim(word, "+");
         // if (trimedWord) check for not a valid identifier "espace"
         l = iterate_export(vr, trimedWord);
@@ -115,7 +128,12 @@ void	check_exp_env(char *cmd, t_vr *vr)
         }
     }
 	else if (!ft_isalpha(cmd[0]) || !check_cmd(word))
+    {
 		ft_error("not a valid identifier\n", 1);
+	    free (word);
+	    g_data.exit_status = 1;
+        return ;
+    }
 	free (word);
 	g_data.exit_status = 0;
 }

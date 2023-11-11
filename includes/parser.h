@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:21:54 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 04:36:29 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/11 22:31:56 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_cmd_tab
     t_redir             *redirs;
     t_file              *file;
     int                 is_pipe;
-    // int                 len;
+    // int                 syntax_error;
     struct s_cmd_tab    *next;
 }           t_cmd_tab;
 
@@ -65,7 +65,7 @@ int         fill_env(t_item **tokens, t_env_list *env);
 t_env_list  *get_var(t_item *token, t_env_list *env_lst);
 void        delete_spaces(t_item **tokens);
 void        remove_quotes(t_item **tokens);
-void        check_quote(t_item **tokens);
+int         check_quote(t_item **tokens);
 void        join_in_quots(t_item **tokens);
 void        fill_cmd(t_item **tokens, t_cmd_tab **cmd_tab);
 void        iterate_redir(t_item *tmp, t_cmd_tab **cmd_tab);
@@ -85,4 +85,6 @@ void        clear_tokens(t_item **tokens);
 int         len_of_cmd(t_item *token);
 char        **creat_cmd(t_item *token);
 
+void        syntax_error(t_item **tokens);
+void    check_pipes(t_item **tokens);
 #endif

@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 06:01:06 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 03:57:21 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 00:00:41 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	set_data(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
+    g_data.syntax_error = 0;
 	g_data.env_dup = ft_envdup(env);
 	g_data.env_lst = ft_envlst(env);
 	g_data.exit_status = 0;
@@ -98,9 +99,9 @@ int	main(int ac, char **av, char **env)
 		line = ft_strtrim(line, " ");
 		// ------------------------------
 		// this if for check if the line is empty or not to not segfault because of EMPTY LINE
-		if (ft_strlen(line) != 0)
+		cmd_tab = command_tab(line);
+		if (ft_strlen(line) != 0 && g_data.syntax_error >= 0)
 		{
-			cmd_tab = command_tab(line);
 			if (cmd_tab == NULL)
 				break ;
 			exec_pipe(cmd_tab, vr);
@@ -109,5 +110,8 @@ int	main(int ac, char **av, char **env)
 		clear_data(&cmd_tab);
 		free(cmd_tab);
 	}
+    // free(line);
+	// clear_data(&cmd_tab);
+	// free(cmd_tab);
 	return (0);
 }

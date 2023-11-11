@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:32:16 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 06:00:28 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/11 23:56:41 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ int	len_of_cmd(t_item *token)
 		if (token->type == WORD && (token->state == GENERAL
 				|| token->state == IN_QUOTE || token->state == IN_DQUOTE))
 			len++;
-		else
-			return (len);
 		token = token->next;
 	}
 	return (len);
