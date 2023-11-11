@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
+/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:14 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 06:17:47 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/11 06:31:04 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,13 @@ char	*unset_word(char *target)
 {
 	int		i;
 	char	*str;
+	int		len;
 
 	i = 0;
-	str = malloc(sizeof(char) * 500);
+	len = -1;
+	while (target[++len] && target[len] != '=')
+		;
+	str = malloc(sizeof(char) * len + 1);
 	while (target[i] && target[i] != '=')
 	{
 		str[i] = target[i];
