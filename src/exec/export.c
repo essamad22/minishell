@@ -6,7 +6,7 @@
 /*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 02:30:25 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/11 03:50:21 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	check_exp_env(char *cmd, t_vr *vr)
 		&& iterate_export(vr, word) == -1)
 	{
 		vr->env = add_to_export(vr->env, cmd);
+		add_env(&g_data.env_lst, new_env(cmd));
 		vr->envlen += 1;
 	}
 	else if (!ft_isalpha(cmd[0]) || !check_cmd(word))
