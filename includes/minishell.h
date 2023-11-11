@@ -6,7 +6,7 @@
 /*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:01:17 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 06:17:29 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/11 02:28:36 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_vr
 	char	**env;
 	int		envlen;
 	int		flag;
+	struct s_vr  *next;
 
 }	t_vr;
 
@@ -131,6 +132,7 @@ typedef struct s_data
 {
     char        **env_dup;
     t_env_list  *env_lst;
+	t_vr 		*export;
     int         exit_status;
     int         heredoc;
     char			*content; // added by Nasro

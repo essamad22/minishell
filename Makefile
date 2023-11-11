@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+         #
+#    By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/02 21:21:50 by aakhtab           #+#    #+#              #
-#    Updated: 2023/11/10 05:27:50 by aakhtab          ###   ########.fr        #
+#    Updated: 2023/11/11 02:23:34 by nasrollahkh      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SRCS			=	src/lexer/lexer.c src/lexer/tokens.c 	\
 
 OBJS			=	$(SRCS:.c=.o)
 
-CFLAGS			=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror -g3 #-fsanitize=address
 
 NAME			=	minishell
 
