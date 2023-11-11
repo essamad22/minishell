@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 06:33:58 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/11 18:57:12 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,24 +79,42 @@ int	iterate_export(t_vr *vr, char *target)
 
 void	check_exp_env(char *cmd, t_vr *vr)
 {
-	// int		l;
+	int		l;
 	char	*word;
 
 	word = unset_word(cmd);
-	// l = iterate_export(vr, word);
-	// if (l > 0 && ft_strnstr(cmd, "=", ft_strlen(cmd)) && check_cmd(word))
-	// {
-	// 	free(vr->env[l]);
-	// 	vr->env[l] = ft_strdup(cmd);
-	// }
-	if (ft_isalpha(cmd[0]) && check_cmd(word)
+	l = iterate_export(vr, word);
+	if (l > 0 && ft_strnstr(cmd, "=", ft_strlen(cmd)) && check_cmd(word))
+	{
+		free(vr->env[l]);
+		vr->env[l] = ft_strdup(cmd);
+	}
+	else if (ft_isalpha(cmd[0]) && check_cmd(word)
 		&& iterate_export(vr, word) == -1)
 	{
 		vr->env = add_to_export(vr->env, cmd);
 		add_env(&g_data.env_lst, new_env(cmd));
 		vr->envlen += 1;
 	}
-	if (!ft_isalpha(cmd[0]) || !check_cmd(word))
+	else if (ft_strnstr(cmd, "+=", ft_strlen(cmd)))
+    {
+        char *trimedWord = ft_strtrim(word, "+");
+        // if (trimedWord) check for not a valid identifier "espace"
+        l = iterate_export(vr, trimedWord);
+        if (l == -1)
+        {
+            vr->env = add_to_export(vr->env, cmd);
+            add_env(&g_data.env_lst, new_env(cmd));
+            vr->envlen += 1;
+        }
+        else
+        {
+            char *new = ft_strjoin(vr->env[l], ft_strchr(cmd, '=') + 1);
+            vr->env[l] = new;
+            free (trimedWord);
+        }
+    }
+	else if (!ft_isalpha(cmd[0]) || !check_cmd(word))
 		ft_error("not a valid identifier\n", 1);
 	free (word);
 	g_data.exit_status = 0;
