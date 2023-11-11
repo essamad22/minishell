@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_part2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:33 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 04:20:34 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/11 04:59:38 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	*openfile_ut(t_redir *file,	int *fd)
 		}
 	}
 	if (file->type == HEREDOC && g_data.exitheredoc != 1)
-		fd[0] = heredoc(file->redirect);
+		fd[0] = heredoc(file->redirect, file->in_quote);
 	return (fd);
 }
 

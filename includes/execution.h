@@ -6,14 +6,14 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:39 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 03:49:40 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/11 04:18:15 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTION_H
 # define EXECUTION_H
 
-#include "/Users/nasrollahkhachabi/Desktop/minishell2/src/execution/libft/libft.h"
+// #include "/Users/nasrollahkhachabi/Desktop/minishell2/src/execution/libft/libft.h"
 #include "minishell.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -120,6 +120,13 @@ void	ft_exit(t_cmd_tab *cmd);
 void    one_cmd(int argc, char *argv[], char **envp);
 // int     ft_strncmp(const char *s1, const char *s2, size_t n);
 
+// ==========================================
+// Heredoc utils ===============
 
+char    *lexer_heredoc(char *hd_line);
+int get_token_hd(t_item **list, char *cmd_line, int *stat);
+int word_hd(t_item **list, char *cmd_line, int *stat);
+void	join_after_expand(t_item **tokens);
+int     file_inquotes(char *file);
 
 #endif

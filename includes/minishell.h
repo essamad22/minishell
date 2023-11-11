@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:01:17 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 02:28:36 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/11 05:04:26 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../lib/libft.h"
 # include "lexer.h"
 # include "parser.h"
-// # include "execution.h"
+# include "execution.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -103,7 +103,10 @@ void	export(t_cmd_tab *list, t_vr *vr, int fd);
 int	iterate_export(t_vr *vr, char *target);
 void	check_exp_env(char *cmd, t_vr *vr);
 int	heredoc_utls(t_v v);
-int	heredoc(char *file_name);
+// ------- edit in herdoc function -------
+// ------- add int in_quote to t_redir -------
+int	heredoc(char *file_name, int in_quote);
+// ----------------------------------------
 int	check_arg(char *arg);
 void	print_echo(char **cmd, int fd);
 void	echo(t_cmd_tab *list, int fd);

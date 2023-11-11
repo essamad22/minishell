@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+         #
+#    By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/02 21:21:50 by aakhtab           #+#    #+#              #
-#    Updated: 2023/11/11 02:23:34 by nasrollahkh      ###   ########.fr        #
+#    Updated: 2023/11/11 02:34:57 by aakhtab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS			=	src/lexer/lexer.c src/lexer/tokens.c 	\
 					src/exec/echo_utls.c\
 					src/exec/utils_2.c\
 					src/exec/ft_strjoin.c\
+					src/heredoc_utils.c\
 
 OBJS			=	$(SRCS:.c=.o)
 

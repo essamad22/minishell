@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:07 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 06:17:47 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/11 04:59:20 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	heredoc_utls(t_v v)
 	return (v.fd[0]);
 }
 
-int	heredoc(char *file_name)
+int	heredoc(char *file_name, int in_quote)
 {
 	t_v	v;
 
@@ -41,6 +41,8 @@ int	heredoc(char *file_name)
 			v.len_h = ft_strlen(v.rd);
 		if (!ft_strncmp(v.rd, file_name, v.len_h))
 			break ;
+        if (in_quote == 0)
+            v.rd = lexer_heredoc(v.rd);
 		ft_putstr_fd(v.rd, v.fd[1]);
 		ft_putstr_fd("\n", v.fd[1]);
 		free(v.rd);

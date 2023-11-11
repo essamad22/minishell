@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 06:01:06 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 03:34:01 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/11 03:57:21 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,6 @@ int	main(int ac, char **av, char **env)
 				break ;
 			exec_pipe(cmd_tab, vr);
 		}
-	t_env_list *a = g_data.env_lst;
-	while(a)
-	{
-		printf("---> %s=%s\n",a->name, a->value);
-		a =a->next;
-	}
 		free(line);
 		clear_data(&cmd_tab);
 		free(cmd_tab);

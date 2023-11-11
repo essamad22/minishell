@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:21:54 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/05 12:26:30 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/11 04:36:29 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_redir
 {
     char            *redirect;
     int             type;
+    int             in_quote;
     struct s_redir  *next;
 }   t_redir;
 
