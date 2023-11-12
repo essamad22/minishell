@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+         #
+#    By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/02 21:21:50 by aakhtab           #+#    #+#              #
-#    Updated: 2023/11/12 05:17:00 by nkhachab         ###   ########.fr        #
+#    Updated: 2023/11/12 11:07:20 by aakhtab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRCS			=	src/lexer/lexer.c src/lexer/tokens.c 	\
 					src/parser/command_tab.c src/lexer/item_utils.c		\
 					src/lexer/quots.c src/utils.c src/utils_2.c src/parser/expantion.c 	\
 					src/parser/parsing_utils.c src/parser/quots_utils.c		\
-					src/parser/re_token.c src/parser/redir.c	\
+					src/parser/re_token.c src/parser/redir.c 	\
+					src/parser/cmd_utils.c	\
 					src/exec/utils.c\
 					src/minishell.c \
 					src/exec/exec.c\

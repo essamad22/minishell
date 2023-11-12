@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:38:44 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 04:23:40 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 08:52:53 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,4 @@ void	join_after_expand(t_item **tokens)
 		tmp->type = WORD;
 		tmp = tmp->next;
 	}
-}
-
-int file_inquotes(char *file)
-{
-    int len;
-
-    len = ft_strlen(file);
-    if (file[0] == '\"' && file[len - 1] == '\"')
-        return (0);
-    else if (file[0] == '\'' && file[len - 1] == '\'')
-        return (0);
-    return (1);
 }

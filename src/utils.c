@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:32:16 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 23:56:41 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 11:06:18 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,48 +45,32 @@ void	ft_free_2d(char **str)
 	free(str);
 }
 
-// void    clear_data(t_cmd_tab **tmp)
-// {
-//     t_cmd_tab *tmp2;
-//     while ((*tmp))
-//     {
-//         ft_free_2d((*tmp)->cmd);
-//         if ((*tmp)->redirs)
-//             free_redir(&(*tmp)->redirs);
-//         tmp2 = (*tmp);
-//         (*tmp) = (*tmp)->next;
-//         free(tmp2);
-//     }
-//     free(*tmp);
-// }
-
-int	len_of_cmd(t_item *token)
-{
-	int	len;
-
-	len = 0;
-	if (!token)
-		return (0);
-	while (token)
-	{
-		if (token->type == WORD && (token->state == GENERAL
-				|| token->state == IN_QUOTE || token->state == IN_DQUOTE))
-			len++;
-		token = token->next;
-	}
-	return (len);
-}
-
 void	free_redir(t_redir **redir)
 {
 	t_redir	*tmp;
 
 	while ((*redir))
 	{
-		free((*redir)->redirect);
+        if ((*redir)->redirect)
+		    free((*redir)->redirect);
 		tmp = (*redir);
 		(*redir) = (*redir)->next;
 		free(tmp);
 	}
 	free(*redir);
+}
+
+void    free_file(t_file **file)
+{
+    t_file  *tmp;
+
+    while ((*file))
+    {
+        if ((*file)->file_name)
+            free((*file)->file_name);
+        tmp = (*file);
+        (*file) = (*file)->next;
+        free(tmp);
+    }
+    free(*file);
 }

@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:33:53 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 22:34:10 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 09:35:57 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,11 @@ t_cmd_tab   *command_tab(char *cmd_line)
 {
     t_item      *tokens;
     t_cmd_tab   *cmd_tab;
-    int         len;
 
     tokens = lexer(cmd_line);
-    len = cmd_len(tokens);
-    cmd_tab = (t_cmd_tab *)ft_calloc(sizeof(t_cmd_tab), len + 1);
-    if (!cmd_tab)
-        return (NULL);
     delete_spaces(&tokens);
     tokens_iterator(tokens, cmd_tab);
+    check_end_quots(&tokens);
     g_data.syntax_error = check_quote(&tokens);
     remove_quotes(&tokens);
     fill_cmd(&tokens, &cmd_tab);

@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:21:54 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 22:31:56 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 11:09:18 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void        remove_quotes(t_item **tokens);
 int         check_quote(t_item **tokens);
 void        join_in_quots(t_item **tokens);
 void        fill_cmd(t_item **tokens, t_cmd_tab **cmd_tab);
-void        iterate_redir(t_item *tmp, t_cmd_tab **cmd_tab);
+void        iterate_redir(t_item **tmp, t_cmd_tab **cmd_tab);
 void        print_cmd_tab(t_cmd_tab **cmd_tab);
 void        add_cmd_tab(t_cmd_tab **cmd_tab, t_cmd_tab *new_cmd_tab, int pipe);
 t_cmd_tab   *new_cmd(t_item *token, int *pipe);
@@ -80,11 +80,13 @@ t_redir     *new_redir(t_item *token, int type);
 int         strlen_2d(char **str);
 void        ft_free_2d(char **str);
 void        free_redir(t_redir **redir);
+void        free_file(t_file **file);
 void        clear_data(t_cmd_tab **cmd_tab);
 void        clear_tokens(t_item **tokens);
 int         len_of_cmd(t_item *token);
-char        **creat_cmd(t_item *token);
+void        creat_cmd(t_item *token, t_cmd_tab **cmd_tab);
 
 void        syntax_error(t_item **tokens);
 void    check_pipes(t_item **tokens);
+void    check_end_quots(t_item **tokens);
 #endif
