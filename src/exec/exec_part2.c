@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_part2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:33 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 04:59:38 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 01:07:13 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	*openfile(t_cmd_tab *list)
 
 void	ft_execve(t_cmd_tab *list, t_vr *vr, char *cmderr)
 {
+	// char ft_strjoin1(ft_strjoin1("minishell : ", cmderr));
 	if (!in_builtin(list))
 	{	
 		if (execve(list->cmd[0], list->cmd, vr->env) < 0)

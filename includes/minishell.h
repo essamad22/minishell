@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:01:17 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 22:17:41 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 01:06:01 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	print_export(char *s, int fd);
 void	export(t_cmd_tab *list, t_vr *vr, int fd);
 int	iterate_export(t_vr *vr, char *target);
 void	check_exp_env(char *cmd, t_vr *vr);
+char	*ft_strjoin01(char *s1, char *s2);
 int	heredoc_utls(t_v v);
 // ------- edit in herdoc function -------
 // ------- add int in_quote to t_redir -------

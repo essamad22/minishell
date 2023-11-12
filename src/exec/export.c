@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 20:22:38 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 00:56:32 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,21 @@ int	check_cmd(char *cmd)
 	return (1);
 }
 
-void	print_export(char *s, int fd)
+void    print_export(char *s, int fd)
 {
-	int		i;
-	int		l;
+    int        i;
 
-	i = 0;
-	while (s[i] && s[i - 1] != '=')
-		ft_putchar_fd(s[i++], fd);
-	l = i - 1;
-	if (s[l] == '=')
-	{
-		ft_putchar_fd('\"', fd);
-		while (s[i])
-			ft_putchar_fd(s[i++], fd);
-		ft_putchar_fd('\"', fd);
-	}
+    i = 0;
+    while (s[i] && s[i] != '=')
+        ft_putchar_fd(s[i++], fd);
+    if (s[i])
+    {
+        i++;
+        ft_putchar_fd('\"', fd);
+        while (s[i])
+            ft_putchar_fd(s[i++], fd);
+        ft_putchar_fd('\"', fd);
+    }
 }
 
 void	export(t_cmd_tab *list, t_vr *vr, int fd)
