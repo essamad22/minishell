@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 10:56:31 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:53:45 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ void	handle_append_env(t_vr *vr, char *cmd)
 		return ;
 	trimmed_word = ft_strtrim(tmp , "+");
 	l = export_iterate(vr, trimmed_word);
-	if (l == -1)
+    if (!ft_isalpha(cmd[0]) || !check_cmd(trimmed_word))
+		ft_error("not a valid identifier\n", 1);
+	else if (l == -1)
 	{
 		vr->env = add_to_export(vr->env, cmd);
 		add_env(&g_data.env_lst, new_env(cmd));
