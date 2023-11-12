@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 00:38:44 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 08:52:53 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 12:01:33 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,3 +80,4 @@ void	join_after_expand(t_item **tokens)
 		tmp = tmp->next;
 	}
 }
+

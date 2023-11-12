@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:01:17 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 09:09:07 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 12:02:51 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,12 +124,6 @@ t_vr	*exec_builtin(t_cmd_tab *list, t_vr *vr, int fd);
 char	*ft_strjoin1(char *s1, char *s2);
 void    clear_data(t_cmd_tab **tmp);
 t_cmd_tab   *command_tab(char *cmd_line);
-
-//
-
-
-
-
 
 
 typedef struct s_data

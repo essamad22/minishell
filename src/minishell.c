@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 06:01:06 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 10:28:10 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 12:01:28 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ t_vr	*init_vr(char **env)
 	signal(SIGQUIT, SIG_IGN);
 	return (fill_env2(env));
 }
-
-//Undefined symbols for architecture
-//Undefined symbols for architecture
 
 int	main(int ac, char **av, char **env)
 {

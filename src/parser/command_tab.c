@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:33:53 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 09:35:57 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 12:01:57 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,54 +45,54 @@ int cmd_len(t_item *tokens)
     return (size);
 }
 
-void print_tokens(t_item *tokens)
-{
-    t_item  *tmp;
+// void print_tokens(t_item *tokens)
+// {
+//     t_item  *tmp;
 
-    tmp = tokens;
-    printf("\033[0;1;2;31m-------------------------------------------------------------------------------------------------------------------------\n");
-    printf("\tCONTENT\t\t|\tLEN\t\t|\tTYPE\t\t|\tSTATE\t\t|\tAMBIGUOS\t|\n");
-    printf("-------------------------------------------------------------------------------------------------------------------------\033[0;37m\n");
-    while (tmp)
-    {
-        printf("\t %s\t", tmp->content);
-        printf("\t|\t %d \t", tmp->len);
-        if (tmp->type == WORD)
-            printf("\t|\t WORD \t");
-        else if (tmp->type == PIPE)
-            printf("\t|\t PIPE \t");
-        else if (tmp->type == SPAC)
-            printf("\t|\t SPAC \t");
-        else if (tmp->type == LESS)
-            printf("\t|\t LESS \t");
-        else if (tmp->type == GREAT)
-            printf("\t|\t GREAT \t");
-        else if (tmp->type == QUOTE)
-            printf("\t|\t QUOTE \t");
-        else if (tmp->type == DQUOTE)
-            printf("\t|\t DQUOTE ");
-        else if (tmp->type == ENV)
-            printf("\t|\t ENV \t");
-        else if (tmp->type == HEREDOC)
-            printf("\t|\t HEREDOC");
-        else if (tmp->type == APPEND)
-            printf("\t|\t APPEND");
-        if (tmp->state == GENERAL)
-            printf("\t|\t GENERAL");
-        else if (tmp->state == IN_QUOTE)
-            printf("\t|\t IN_QUOTE");
-        else if (tmp->state == IN_DQUOTE)
-            printf("\t|\t IN_DQUOTE");
-        if (tmp->is_ambiguous == 1)
-        {
-            printf("\t|\t TRUE\t\t|");
-        }
-        else
-            printf("\t|\t FALSE\t\t|");
-        printf("\n-------------------------------------------------------------------------------------------------------------------------\n");
-        tmp = tmp->next;
-    }
-}
+//     tmp = tokens;
+//     printf("\033[0;1;2;31m-------------------------------------------------------------------------------------------------------------------------\n");
+//     printf("\tCONTENT\t\t|\tLEN\t\t|\tTYPE\t\t|\tSTATE\t\t|\tAMBIGUOS\t|\n");
+//     printf("-------------------------------------------------------------------------------------------------------------------------\033[0;37m\n");
+//     while (tmp)
+//     {
+//         printf("\t %s\t", tmp->content);
+//         printf("\t|\t %d \t", tmp->len);
+//         if (tmp->type == WORD)
+//             printf("\t|\t WORD \t");
+//         else if (tmp->type == PIPE)
+//             printf("\t|\t PIPE \t");
+//         else if (tmp->type == SPAC)
+//             printf("\t|\t SPAC \t");
+//         else if (tmp->type == LESS)
+//             printf("\t|\t LESS \t");
+//         else if (tmp->type == GREAT)
+//             printf("\t|\t GREAT \t");
+//         else if (tmp->type == QUOTE)
+//             printf("\t|\t QUOTE \t");
+//         else if (tmp->type == DQUOTE)
+//             printf("\t|\t DQUOTE ");
+//         else if (tmp->type == ENV)
+//             printf("\t|\t ENV \t");
+//         else if (tmp->type == HEREDOC)
+//             printf("\t|\t HEREDOC");
+//         else if (tmp->type == APPEND)
+//             printf("\t|\t APPEND");
+//         if (tmp->state == GENERAL)
+//             printf("\t|\t GENERAL");
+//         else if (tmp->state == IN_QUOTE)
+//             printf("\t|\t IN_QUOTE");
+//         else if (tmp->state == IN_DQUOTE)
+//             printf("\t|\t IN_DQUOTE");
+//         if (tmp->is_ambiguous == 1)
+//         {
+//             printf("\t|\t TRUE\t\t|");
+//         }
+//         else
+//             printf("\t|\t FALSE\t\t|");
+//         printf("\n-------------------------------------------------------------------------------------------------------------------------\n");
+//         tmp = tmp->next;
+//     }
+// }
 
 // void    print_cmd_tab(t_cmd_tab **cmd_tab)
 // {

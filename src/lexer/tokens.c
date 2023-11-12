@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:36:05 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 01:10:21 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 12:02:16 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,3 +87,4 @@ int env(t_item **list, char *cmd, int *stat)
     add_item(list , new_item(ft_substr(cmd, 0, i), i, ENV, *stat));
     return (i);
 }
+

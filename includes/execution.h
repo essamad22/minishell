@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:39 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 04:18:15 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 12:03:03 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,6 @@ char    *lexer_heredoc(char *hd_line);
 int get_token_hd(t_item **list, char *cmd_line, int *stat);
 int word_hd(t_item **list, char *cmd_line, int *stat);
 void	join_after_expand(t_item **tokens);
-int     file_inquotes(char *file);
+// int     file_inquotes(char *file);
 
 #endif

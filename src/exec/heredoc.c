@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:07 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 09:11:53 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 12:02:31 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,3 +108,4 @@ void	echo(t_cmd_tab *list, int fd)
 		print_echo(list->cmd, fd);
 	g_data.exit_status = 0;
 }
+

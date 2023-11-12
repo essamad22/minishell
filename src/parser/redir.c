@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:23:02 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 09:46:44 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 12:01:36 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,4 @@ void	add_redir(t_redir **redirs, t_redir *new_redir)
 		tmp->next = new_redir;
 	}
 }
+

@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 10:22:59 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 11:05:12 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 12:01:42 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,4 @@ void	iterate_redir(t_item **tmp, t_cmd_tab **cmd_tab)
 		add_redir(&(*cmd_tab)->redirs, new_redir((*tmp)->next, HEREDOC));
     (*tmp) = (*tmp)->next;
 }
+
