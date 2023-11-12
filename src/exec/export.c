@@ -6,47 +6,11 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 06:45:05 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 09:44:13 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-int	check_cmd(char *cmd)
-{
-	int	i;
-
-	i = -1;
-	while (cmd[++i])
-	{
-		if (!ft_isalnum(cmd[i]))
-			return (0);
-	}
-	return (1);
-}
-
-void	print_export(char *s, int fd)
-{
-	int	i;
-	int	l;
-
-	i = 0;
-	l = 0;
-	while (s[i] && (i == 0 || s[i - 1] != '='))
-	{
-		if (s[i] == '\0')
-			break ;
-		ft_putchar_fd(s[i++], fd);
-	}
-	l = i - 1;
-	if (s[l] == '=')
-	{
-		ft_putchar_fd('\"', fd);
-		while (s[i])
-			ft_putchar_fd(s[i++], fd);
-		ft_putchar_fd('\"', fd);
-	}
-}
 
 void	export(t_cmd_tab *list, t_vr *vr, int fd)
 {
@@ -82,6 +46,49 @@ int	export_iterate(t_vr *vr, char *target)
 	return (-1);
 }
 
+int	check_valid_var_name(char *cmd)
+{
+	char	*delimiter;
+	char	*tmp;
+
+	delimiter = ft_strnstr(cmd, "+=", ft_strlen(cmd));
+	tmp = cmd;
+	while (tmp && tmp != delimiter)
+	{
+		if (*tmp == '+')
+		{
+			ft_error("not a valid identifier\n", 1);
+			return (0);
+		}
+		tmp++;
+	}
+	return (1);
+}
+
+void	handle_append_env(t_vr *vr, char *cmd)
+{
+	char	*trimmed_word;
+	char	*new;
+	int		l;
+
+	if (!check_valid_var_name(cmd))
+		return ;
+	trimmed_word = ft_strtrim(unset_word(cmd), "+");
+	l = export_iterate(vr, trimmed_word);
+	if (l == -1)
+	{
+		vr->env = add_to_export(vr->env, cmd);
+		add_env(&g_data.env_lst, new_env(cmd));
+		vr->envlen += 1;
+	}
+	else
+	{
+		new = ft_strjoin(vr->env[l], ft_strchr(cmd, '=') + 1);
+		vr->env[l] = new;
+	}
+	free(trimmed_word);
+}
+
 void	check_exp_env(char *cmd, t_vr *vr)
 {
 	int		l;
@@ -102,45 +109,9 @@ void	check_exp_env(char *cmd, t_vr *vr)
 		vr->envlen += 1;
 	}
 	else if (ft_strnstr(cmd, "+=", ft_strlen(cmd)))
-    {
-        char *delimeter;
-        char *tmp;
-
-		delimeter = ft_strnstr(cmd, "+=", ft_strlen(cmd));
-		tmp = cmd;
-        while(tmp && tmp != delimeter)
-        {
-            if(*tmp == '+')
-            {
-                ft_error("not a valid identifier\n", 1);
-	            free (word);
-	            g_data.exit_status = 1;
-                return ;
-            }
-            tmp++;
-        }
-        char *trimedWord = ft_strtrim(word, "+");
-        l = export_iterate(vr, trimedWord);
-        if (l == -1)
-        {
-            vr->env = add_to_export(vr->env, cmd);
-            add_env(&g_data.env_lst, new_env(cmd));
-            vr->envlen += 1;
-        }
-        else
-        {
-            char *new = ft_strjoin(vr->env[l], ft_strchr(cmd, '=') + 1);
-            vr->env[l] = new;
-            free (trimedWord);
-        }
-    }
+		handle_append_env(vr, cmd);
 	else if (!ft_isalpha(cmd[0]) || !check_cmd(word))
-    {
 		ft_error("not a valid identifier\n", 1);
-	    free (word);
-	    g_data.exit_status = 1;
-        return ;
-    }
 	free (word);
 	g_data.exit_status = 0;
 }
