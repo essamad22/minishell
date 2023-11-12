@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:02 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 02:45:19 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 09:44:34 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,40 @@ char	*ft_strjoin1(char *s1, char *s2)
 	ft_strcat((char *)str, (char *)s1);
 	ft_strcat((char *)str, (char *)s2);
 	return (str);
+}
+
+int	check_cmd(char *cmd)
+{
+	int	i;
+
+	i = -1;
+	while (cmd[++i])
+	{
+		if (!ft_isalnum(cmd[i]))
+			return (0);
+	}
+	return (1);
+}
+
+void	print_export(char *s, int fd)
+{
+	int	i;
+	int	l;
+
+	i = 0;
+	l = 0;
+	while (s[i] && (i == 0 || s[i - 1] != '='))
+	{
+		if (s[i] == '\0')
+			break ;
+		ft_putchar_fd(s[i++], fd);
+	}
+	l = i - 1;
+	if (s[l] == '=')
+	{
+		ft_putchar_fd('\"', fd);
+		while (s[i])
+			ft_putchar_fd(s[i++], fd);
+		ft_putchar_fd('\"', fd);
+	}
 }
