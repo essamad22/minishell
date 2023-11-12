@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 06:01:06 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 00:00:41 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 11:06:55 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,16 @@ void	clear_data(t_cmd_tab **tmp)
 }
 //Undefined symbols for architecture
 
+void free_vr(t_vr *vr) {
+
+  for (int i = 0; i < vr->envlen; i++) {
+    free(vr->env[i]);
+  }
+  free(vr->env);
+
+  free(vr);
+}
+
 int	main(int ac, char **av, char **env)
 {
 	char *line;
@@ -110,6 +120,7 @@ int	main(int ac, char **av, char **env)
 		clear_data(&cmd_tab);
 		free(cmd_tab);
 	}
+	free_vr(vr);
     // free(line);
 	// clear_data(&cmd_tab);
 	// free(cmd_tab);

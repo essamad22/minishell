@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 09:44:13 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 10:56:31 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,12 @@ void	handle_append_env(t_vr *vr, char *cmd)
 	char	*trimmed_word;
 	char	*new;
 	int		l;
+	char *tmp;
 
+	tmp = unset_word(cmd);
 	if (!check_valid_var_name(cmd))
 		return ;
-	trimmed_word = ft_strtrim(unset_word(cmd), "+");
+	trimmed_word = ft_strtrim(tmp , "+");
 	l = export_iterate(vr, trimmed_word);
 	if (l == -1)
 	{
@@ -84,9 +86,11 @@ void	handle_append_env(t_vr *vr, char *cmd)
 	else
 	{
 		new = ft_strjoin(vr->env[l], ft_strchr(cmd, '=') + 1);
+		free(vr->env[l]);
 		vr->env[l] = new;
 	}
 	free(trimmed_word);
+	free(tmp);
 }
 
 void	check_exp_env(char *cmd, t_vr *vr)
@@ -104,10 +108,11 @@ void	check_exp_env(char *cmd, t_vr *vr)
 	else if (ft_isalpha(cmd[0]) && check_cmd(word)
 		&& export_iterate(vr, word) == -1)
 	{
-		vr->env = add_to_export(vr->env, cmd);
+		vr->env = add_to_export(vr->env, cmd);;
 		add_env(&g_data.env_lst, new_env(cmd));
 		vr->envlen += 1;
 	}
+	
 	else if (ft_strnstr(cmd, "+=", ft_strlen(cmd)))
 		handle_append_env(vr, cmd);
 	else if (!ft_isalpha(cmd[0]) || !check_cmd(word))

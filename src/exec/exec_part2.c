@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:33 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 06:47:51 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:01:42 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_execve(t_cmd_tab *list, t_vr *vr, char *cmderr)
 			tmp = ft_strjoin("minishell : ", cmderr);
 			errormsg = ft_strjoin(tmp, " :command not found\n");
 			ft_error(errormsg, 127);
-			free (cmderr);
+			free(list->cmd[0]);
 			free(tmp);
 			free(errormsg);
 			exit (127);

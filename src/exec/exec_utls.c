@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:42 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 05:15:40 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:03:33 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,11 @@ char	*ft_checkaccess(char *cmd, char **env)
 		free(env[i]);
 		env[i] = tmp;
 		check = ft_strjoin(env[i], cmd);
-		if (access(check, X_OK) == 0)
-			return (check);
+		res = access(check, X_OK);
+		if (res == 0)
+		{
+			return check;
+		}
 		free(check);
 		i++;
 	}

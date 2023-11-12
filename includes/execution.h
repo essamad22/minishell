@@ -3,130 +3,112 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:39 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 04:18:15 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 09:54:59 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTION_H
 # define EXECUTION_H
 
-// #include "/Users/nasrollahkhachabi/Desktop/minishell2/src/execution/libft/libft.h"
 #include "minishell.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <string.h>
-#include <fcntl.h>
-#include <signal.h>
-#include <errno.h>
-# include <readline/readline.h>
-# include <readline/history.h>
 
-
-# define EIAD ": is a directory\n"
-# define ENSFD ": No such file or directory\n"
-# define ECNF ": command not found\n"
-# define EPD ": Permission denied\n"
-# define ESYNTX "minishell: syntax error near unexpected token `"
-# define EAMBGRD ": ambiguous redirect\n"
-
-
-// typedef struct t_data
-// {
-// 	char			*content;
-// 	struct t_data	*next;
-
-// }					t_data;
-
-//New Structs
-
-// typedef struct s_redir
-// {
-//     char            *redirect;
-//     int             type;
-//     struct s_redir  *next;
-// }   t_redir;
-
-// typedef struct s_cmd_tab
-// {
-//     char                **cmd;
-//     t_redir             *redirs;
-//     int                 is_pipe;
-//     // int                 len;
-//     struct s_cmd_tab    *next;
-// }           t_cmd_tab;
-
-typedef struct shell
+typedef struct s_v
 {
-	t_redir			*redirct;
-	t_cmd_tab		*cmd;
-	int				index;
-	char			**all_cmds;
-	char			**str;
-	int				pipe;
-	struct shell	*next;
-	int				in_id;
-	int				out_id;
-	int				pid;
-	int				dell;
-	char			**s1;
-}					t_minishell;
-//New Structs
+	int			is_pipe;
+	t_cmd_tab		*tmp;
+	void		*exec;
+	int			i;
+	int			j;
+	int			status;
+	int			len;
+	char		*rd;
+	int			len_h;
+	int			fd[2];
 
-typedef struct t_info
+}	t_v;
+
+typedef struct s_vr
 {
+	char	**env;
+	int		envlen;
+	int		flag;
+	struct s_vr  *next;
 
-	int				i_exp;
-	int				check;
-	int				check1;
-	
-}					t_info;
+}	t_vr;
 
-typedef struct s_env
+typedef struct s_exec_p
 {
-	char			*var;
-	char			*value;
-	struct s_env	*prev;
-	struct s_env	*next;
-}			t_env;
+	int		*fd;
+	pid_t	pid;
+	int		cmdnbr;
+	int		*p;
+	int		fd_in;
+	int		fd_heredoc;
 
-typedef struct s_global
-{
-	t_env		*env;
-	t_env		*export;
-}			t_global;
+}	t_exec_p;
 
-int     strlenhtal(char *s);
-void    ft_putstr_fd(char *s, int fd);
-void    ft_putchar_fd(char c, int fd);
-int     ft_strcmp(const char *s1, const char *s2);
-int     ft_strlen1(const char *s);
-char	*ft_strjoin10(char *s1, char *s2);
-char	*getz(void);
-char	*getpwd(void);
-void	printerr(char *s1, char *s2, char *s3);
-char	*ft_strjoin1(char *s1, char *s2);
-int     checktossawiplace(char *s);
-char	*bringbeforetossawi(char *s);
-char	*bringaftertossawi(char *s);
-void	ft_exit(t_cmd_tab *cmd);
-// int	ft_cd(t_list *p, t_data **data);
-// void	ft_export(t_list *p, t_data **data, t_info *info);
-// int	ft_unset(t_list *p, t_data **data);
-void    one_cmd(int argc, char *argv[], char **envp);
-// int     ft_strncmp(const char *s1, const char *s2, size_t n);
+void		change_pwdenv(char *oldpwd, t_vr *vr);
+void		ft_exit(t_cmd_tab *cmd);
+void		cd(t_cmd_tab *list, t_vr *vr);
+void		pwd(int fd);
+int			in_builtin(t_cmd_tab *list);
+t_vr		*fill_env2(char **envp);
+void		env2(char **cmd, t_vr *vr, int fd);
+t_vr		*exec_builtin(t_cmd_tab *list, t_vr *vr, int fd);
+int			ft_exit_2(t_cmd_tab *list);
+void		ft_exit(t_cmd_tab *list);
+void		print_n_echo(char **cmd, int fd, int i);
+int			*out_file(t_redir *file,	int *fd);
+int			*openfile_ext(t_redir *file,	int *fd);
+int			*openfile(t_cmd_tab *list);
+void		ft_execve(t_cmd_tab *list, t_vr *vr, char *cmderr);
+char		*ft_getpath(char **envp);
+char		**get_path_splited(char **envp);
+char		*ft_checkaccess(char *cmd, char **env);
+void		handle_sig(void);
+void		ft_child(t_cmd_tab *list, t_vr *vr, t_exec_p *exec);
+void		*exec_pipe_ext(t_cmd_tab *list, t_exec_p *exec, t_vr *vr, int pipe_num);
+void		*exec_pipe(t_cmd_tab *list, t_vr *vr);
+int			check_cmd(char *cmd);
+void		print_export(char *s, int fd);
+void		export(t_cmd_tab *list, t_vr *vr, int fd);
+int			export_iterate(t_vr *vr, char *target);
+void		check_exp_env(char *cmd, t_vr *vr);
+char		*ft_strjoin01(char *s1, char *s2);
+int			heredoc_utls(t_v v);
+// ------ edit in herdoc function -------
+// ------ add int in_quote to t_redir -------
+int			heredoc(char *file_name, int in_quote);
+// ----------------------------------------
+int			check_arg(char *arg);
+void		print_echo(char **cmd, int fd);
+void		echo(t_cmd_tab *list, int fd);
+void		ft_freetwo(char **target);
+char		**unset_ut(char *arg, char **target, int len);
+t_vr		*unset(char **cmd, t_vr *vr);
+char		*unset_word(char *target);
+void		closepipe_andwait(t_exec_p *exec, t_v *v);
+void		ft_error(char *msg, int exit_code);
+int			ft_lstlen(t_cmd_tab *lst);
+void		duplicate_fd(t_cmd_tab *list, t_exec_p *exec);
+char		**add_to_export(char **env, char *elmnt);
+t_vr		*exec_builtin(t_cmd_tab *list, t_vr *vr, int fd);
+char		*ft_strjoin1(char *s1, char *s2);
+void    	clear_data(t_cmd_tab **tmp);
+t_cmd_tab   *command_tab(char *cmd_line);
 
-// ==========================================
-// Heredoc utils ===============
+//
 
-char    *lexer_heredoc(char *hd_line);
-int get_token_hd(t_item **list, char *cmd_line, int *stat);
-int word_hd(t_item **list, char *cmd_line, int *stat);
-void	join_after_expand(t_item **tokens);
-int     file_inquotes(char *file);
+// =============================================//
+// =============== Heredoc utils ===============//
+
+char    	*lexer_heredoc(char *hd_line);
+int 		get_token_hd(t_item **list, char *cmd_line, int *stat);
+int 		word_hd(t_item **list, char *cmd_line, int *stat);
+void		join_after_expand(t_item **tokens);
+int     	file_inquotes(char *file);
 
 #endif

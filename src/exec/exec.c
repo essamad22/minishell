@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:51 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 06:48:49 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:04:40 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ char	*prepare_command(t_cmd_tab *list, t_vr *vr, t_exec_p *exec)
 		tmp = get_path_splited(vr->env);
 		cmd = ft_checkaccess(list->cmd[0], tmp);
 		ft_free_2d(tmp);
-		free(list->cmd[0]);
-		list->cmd[0] = cmd;
+		if (cmd != NULL)
+		{
+			free(list->cmd[0]);
+			list->cmd[0] = cmd;
+		}
 	}
 	return (list->cmd[0]);
 }

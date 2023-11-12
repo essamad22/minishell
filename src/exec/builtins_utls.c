@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_utls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
+/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:14 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 06:17:47 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/12 09:55:04 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
