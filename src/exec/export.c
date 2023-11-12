@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 12:53:45 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 13:08:30 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,18 @@ int	check_valid_var_name(char *cmd)
 	return (1);
 }
 
-void	handle_append_env(t_vr *vr, char *cmd)
+void	handle_append_env(t_vr *vr, char *cmd, int l)
 {
 	char	*trimmed_word;
 	char	*new;
-	int		l;
-	char *tmp;
+	char	*tmp;
 
 	tmp = unset_word(cmd);
 	if (!check_valid_var_name(cmd))
 		return ;
-	trimmed_word = ft_strtrim(tmp , "+");
+	trimmed_word = ft_strtrim(tmp, "+");
 	l = export_iterate(vr, trimmed_word);
-    if (!ft_isalpha(cmd[0]) || !check_cmd(trimmed_word))
+	if (!ft_isalpha(cmd[0]) || !check_cmd(trimmed_word))
 		ft_error("not a valid identifier\n", 1);
 	else if (l == -1)
 	{
@@ -107,18 +106,17 @@ void	check_exp_env(char *cmd, t_vr *vr)
 		free(vr->env[l]);
 		vr->env[l] = ft_strdup(cmd);
 	}
-	else if (ft_isalpha(cmd[0]) && check_cmd(word)
-		&& export_iterate(vr, word) == -1)
+	else if (ft_isalpha(cmd[0]) && check_cmd(word) && export_iterate(vr,
+			word) == -1)
 	{
-		vr->env = add_to_export(vr->env, cmd);;
+		vr->env = add_to_export(vr->env, cmd);
 		add_env(&g_data.env_lst, new_env(cmd));
 		vr->envlen += 1;
 	}
-	
 	else if (ft_strnstr(cmd, "+=", ft_strlen(cmd)))
-		handle_append_env(vr, cmd);
+		handle_append_env(vr, cmd, l);
 	else if (!ft_isalpha(cmd[0]) || !check_cmd(word))
 		ft_error("not a valid identifier\n", 1);
-	free (word);
+	free(word);
 	g_data.exit_status = 0;
 }

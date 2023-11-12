@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 01:20:22 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 12:01:38 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 13:25:39 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ void	remove_quotes(t_item **tokens)
 			tmp = tmp->next;
 	}
 }
-

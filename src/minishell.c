@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 06:01:06 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 12:18:01 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 13:36:54 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	set_data(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-    g_data.syntax_error = 0;
+	g_data.syntax_error = 0;
 	g_data.env_dup = ft_envdup(env);
 	g_data.env_lst = ft_envlst(env);
 	g_data.exit_status = 0;
@@ -34,7 +34,7 @@ void	set_data(int ac, char **av, char **env)
 
 void	handle_sigint(int sigint)
 {
-	(void) sigint;
+	(void)sigint;
 	g_data.exit_status = 1;
 	if (g_data.flag)
 	{
@@ -52,16 +52,6 @@ void	handle_sigint(int sigint)
 	}
 }
 
-void free_vr(t_vr *vr) {
-
-  for (int i = 0; i < vr->envlen; i++) {
-    free(vr->env[i]);
-  }
-  free(vr->env);
-
-  free(vr);
-}
-
 t_vr	*init_vr(char **env)
 {
 	g_data.fd = dup(0);
@@ -73,9 +63,9 @@ t_vr	*init_vr(char **env)
 
 int	main(int ac, char **av, char **env)
 {
-	char *line;
-	t_cmd_tab *cmd_tab;
-	t_vr *vr;
+	t_cmd_tab	*cmd_tab;
+	char		*line;
+	t_vr		*vr;
 
 	line = NULL;
 	vr = init_vr(env);
@@ -97,8 +87,5 @@ int	main(int ac, char **av, char **env)
 		free(cmd_tab);
 	}
 	free_vr(vr);
-    // free(line);
-	// clear_data(&cmd_tab);
-	// free(cmd_tab);
 	return (0);
 }

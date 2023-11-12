@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utls.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:42 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 12:03:33 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 13:11:08 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,7 @@ char	*ft_checkaccess(char *cmd, char **env)
 		check = ft_strjoin(env[i], cmd);
 		res = access(check, X_OK);
 		if (res == 0)
-		{
-			return check;
-		}
+			return (check);
 		free(check);
 		i++;
 	}

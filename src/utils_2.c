@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 17:35:01 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 12:01:18 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 13:34:10 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,3 @@ void	add_env(t_env_list **env_lst, t_env_list *new)
 		tmp->next = new;
 	}
 }
-

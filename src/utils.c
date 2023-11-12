@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:32:16 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 12:01:14 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 13:33:56 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	free_redir(t_redir **redir)
 
 	while ((*redir))
 	{
-        if ((*redir)->redirect)
-		    free((*redir)->redirect);
+		if ((*redir)->redirect)
+			free((*redir)->redirect);
 		tmp = (*redir);
 		(*redir) = (*redir)->next;
 		free(tmp);
@@ -60,17 +60,17 @@ void	free_redir(t_redir **redir)
 	free(*redir);
 }
 
-void    free_file(t_file **file)
+void	free_file(t_file **file)
 {
-    t_file  *tmp;
+	t_file	*tmp;
 
-    while ((*file))
-    {
-        if ((*file)->file_name)
-            free((*file)->file_name);
-        tmp = (*file);
-        (*file) = (*file)->next;
-        free(tmp);
-    }
-    free(*file);
+	while ((*file))
+	{
+		if ((*file)->file_name)
+			free((*file)->file_name);
+		tmp = (*file);
+		(*file) = (*file)->next;
+		free(tmp);
+	}
+	free(*file);
 }
