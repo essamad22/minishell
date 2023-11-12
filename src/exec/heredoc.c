@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:07 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 05:24:28 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 05:19:23 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	heredoc(char *file_name, int in_quote)
 			v.len_h = ft_strlen(v.rd);
 		if (!ft_strncmp(v.rd, file_name, v.len_h))
 			break ;
-        if (in_quote == 0 && ft_strlen(v.rd) > 0)
-            v.rd = lexer_heredoc(v.rd);
+		if (in_quote == 0 && ft_strlen(v.rd) > 0)
+			v.rd = lexer_heredoc(v.rd);
 		ft_putstr_fd(v.rd, v.fd[1]);
 		ft_putstr_fd("\n", v.fd[1]);
 		free(v.rd);

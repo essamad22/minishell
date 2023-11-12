@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 02:27:06 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 06:45:05 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,27 @@ int	check_cmd(char *cmd)
 	return (1);
 }
 
-void print_export(char *s, int fd)
+void	print_export(char *s, int fd)
 {
-    int i = 0;
-    int l = 0;
+	int	i;
+	int	l;
 
-    while (s[i] && (i == 0 || s[i - 1] != '='))
-    {
-        if (s[i] == '\0')
-            break;
-        ft_putchar_fd(s[i++], fd);
-    }
-    l = i - 1;
-
-    if (s[l] == '=')
-    {
-        ft_putchar_fd('\"', fd);
-        while (s[i])
-            ft_putchar_fd(s[i++], fd);
-        ft_putchar_fd('\"', fd);
-    }
+	i = 0;
+	l = 0;
+	while (s[i] && (i == 0 || s[i - 1] != '='))
+	{
+		if (s[i] == '\0')
+			break ;
+		ft_putchar_fd(s[i++], fd);
+	}
+	l = i - 1;
+	if (s[l] == '=')
+	{
+		ft_putchar_fd('\"', fd);
+		while (s[i])
+			ft_putchar_fd(s[i++], fd);
+		ft_putchar_fd('\"', fd);
+	}
 }
 
 void	export(t_cmd_tab *list, t_vr *vr, int fd)
@@ -68,7 +69,7 @@ void	export(t_cmd_tab *list, t_vr *vr, int fd)
 	}
 }
 
-int	iterate_export(t_vr *vr, char *target)
+int	export_iterate(t_vr *vr, char *target)
 {
 	int	i;
 
@@ -87,14 +88,14 @@ void	check_exp_env(char *cmd, t_vr *vr)
 	char	*word;
 
 	word = unset_word(cmd);
-	l = iterate_export(vr, word);
+	l = export_iterate(vr, word);
 	if (l > 0 && ft_strnstr(cmd, "=", ft_strlen(cmd)) && check_cmd(word))
 	{
 		free(vr->env[l]);
 		vr->env[l] = ft_strdup(cmd);
 	}
 	else if (ft_isalpha(cmd[0]) && check_cmd(word)
-		&& iterate_export(vr, word) == -1)
+		&& export_iterate(vr, word) == -1)
 	{
 		vr->env = add_to_export(vr->env, cmd);
 		add_env(&g_data.env_lst, new_env(cmd));
@@ -102,8 +103,11 @@ void	check_exp_env(char *cmd, t_vr *vr)
 	}
 	else if (ft_strnstr(cmd, "+=", ft_strlen(cmd)))
     {
-        char *delimeter = ft_strnstr(cmd, "+=", ft_strlen(cmd));
-        char *tmp = cmd;
+        char *delimeter;
+        char *tmp;
+
+		delimeter = ft_strnstr(cmd, "+=", ft_strlen(cmd));
+		tmp = cmd;
         while(tmp && tmp != delimeter)
         {
             if(*tmp == '+')
@@ -116,8 +120,7 @@ void	check_exp_env(char *cmd, t_vr *vr)
             tmp++;
         }
         char *trimedWord = ft_strtrim(word, "+");
-        // if (trimedWord) check for not a valid identifier "espace"
-        l = iterate_export(vr, trimedWord);
+        l = export_iterate(vr, trimedWord);
         if (l == -1)
         {
             vr->env = add_to_export(vr->env, cmd);

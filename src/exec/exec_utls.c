@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:42 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 00:25:24 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 05:15:40 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ char	*ft_getpath(char **envp)
 char	**get_path_splited(char **envp)
 {
 	char	**env;
+	char	*path;
 
-	env = ft_split(ft_getpath(envp), ':');
+	path = ft_getpath(envp);
+	env = ft_split(path, ':');
+	free(path);
 	if (!env)
 	{
 		ft_error("minishell : No such file or directory\n", 127);
@@ -51,16 +54,20 @@ char	*ft_checkaccess(char *cmd, char **env)
 	int		res;
 	int		i;
 	char	*check;
+	char	*tmp;
 
 	i = 0;
 	res = 1;
 	while (env[i] && res != 0)
 	{
-		env[i] = ft_strjoin1(env[i], "/");
-		check = ft_strjoin1(env[i], cmd);
-		res = access(check, X_OK);
+		tmp = ft_strjoin(env[i], "/");
+		free(env[i]);
+		env[i] = tmp;
+		check = ft_strjoin(env[i], cmd);
+		if (access(check, X_OK) == 0)
+			return (check);
+		free(check);
 		i++;
 	}
-	ft_freetwo(env);	
-	return (check);
+	return (NULL);
 }

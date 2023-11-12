@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:01:17 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 01:06:01 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 06:48:49 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	ft_exit_2(t_cmd_tab *list);
 void	ft_exit(t_cmd_tab *list);
 void	print_n_echo(char **cmd, int fd, int i);
 int	*out_file(t_redir *file,	int *fd);
-int	*openfile_ut(t_redir *file,	int *fd);
+int	*openfile_ext(t_redir *file,	int *fd);
 int	*openfile(t_cmd_tab *list);
 void	ft_execve(t_cmd_tab *list, t_vr *vr, char *cmderr);
 char	*ft_getpath(char **envp);
@@ -95,12 +95,12 @@ char	**get_path_splited(char **envp);
 char	*ft_checkaccess(char *cmd, char **env);
 void	handle_sig(void);
 void	ft_child(t_cmd_tab *list, t_vr *vr, t_exec_p *exec);
-void	*exec_pipe_ut(t_cmd_tab *list, t_exec_p *exec, t_vr *vr, int pipe_num);
+void	*exec_pipe_ext(t_cmd_tab *list, t_exec_p *exec, t_vr *vr, int pipe_num);
 void	*exec_pipe(t_cmd_tab *list, t_vr *vr);
 int	check_cmd(char *cmd);
 void	print_export(char *s, int fd);
 void	export(t_cmd_tab *list, t_vr *vr, int fd);
-int	iterate_export(t_vr *vr, char *target);
+int	export_iterate(t_vr *vr, char *target);
 void	check_exp_env(char *cmd, t_vr *vr);
 char	*ft_strjoin01(char *s1, char *s2);
 int	heredoc_utls(t_v v);

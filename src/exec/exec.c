@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:51 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 00:20:10 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 06:48:49 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,14 @@ void	handle_sig(void)
 	signal(SIGINT, SIG_DFL);
 }
 
-void	ft_child(t_cmd_tab *list, t_vr *vr, t_exec_p *exec)
+char	*prepare_command(t_cmd_tab *list, t_vr *vr, t_exec_p *exec)
 {
 	char	*cmd;
-	char	*cmderr;
-	int		i;
+	char	**tmp;
 
 	handle_sig();
 	if (!list->cmd[0])
-		return ;
-	cmderr = ft_strdup(list->cmd[0]);
+		return (NULL);
 	duplicate_fd(list, exec);
 	if (in_builtin(list))
 	{
@@ -36,18 +34,29 @@ void	ft_child(t_cmd_tab *list, t_vr *vr, t_exec_p *exec)
 	}
 	if (access(list->cmd[0], X_OK) && !in_builtin(list))
 	{
-		cmd = ft_checkaccess(list->cmd[0], get_path_splited(vr->env));
-		free (list->cmd[0]);
-		list->cmd[0] = ft_strdup(cmd);
-		free (cmd);
+		tmp = get_path_splited(vr->env);
+		cmd = ft_checkaccess(list->cmd[0], tmp);
+		ft_free_2d(tmp);
+		free(list->cmd[0]);
+		list->cmd[0] = cmd;
 	}
+	return (list->cmd[0]);
+}
+
+void	ft_child(t_cmd_tab *list, t_vr *vr, t_exec_p *exec)
+{
+	int		i;
+	char	*cmderr;
+
 	i = 0;
+	cmderr = prepare_command(list, vr, exec);
 	while (i < list->is_pipe * 2)
 		close(exec->p[i++]);
 	ft_execve(list, vr, cmderr);
+	free(cmderr);
 }
 
-void	*exec_pipe_ut(t_cmd_tab *list, t_exec_p *exec, t_vr *vr, int pipe_num)
+void	*exec_pipe_ext(t_cmd_tab *list, t_exec_p *exec, t_vr *vr, int pipe_num)
 {
 	exec->fd = openfile(list);
 	if (!exec->fd)
@@ -74,7 +83,6 @@ void	*exec_pipe(t_cmd_tab *list, t_vr *vr)
 {
 	t_exec_p	*exec;
 	t_v			v;
-	// int i=0;
 
 	if (!list)
 		return (NULL);
@@ -89,7 +97,7 @@ void	*exec_pipe(t_cmd_tab *list, t_vr *vr)
 	exec->fd_in = 0;
 	while (list)
 	{
-		exec_pipe_ut(list, exec, vr, v.is_pipe);
+		exec_pipe_ext(list, exec, vr, v.is_pipe);
 		list = list->next;
 		exec->cmdnbr++;
 		free(exec->fd);

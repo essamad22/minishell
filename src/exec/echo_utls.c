@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   echo_utls.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:29 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/10 03:47:30 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 04:41:02 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../includes/minishell.h"
 

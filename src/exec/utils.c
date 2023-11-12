@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:23 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 02:17:14 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 05:20:12 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_error(char *msg, int exit_code)
 
 int	ft_lstlen(t_cmd_tab *lst)
 {
-	int		len;
+	int			len;
 	t_cmd_tab	*tmp;
 
 	tmp = lst;

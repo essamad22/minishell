@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:33 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 01:07:13 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 06:47:51 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	*out_file(t_redir *file,	int *fd)
 {
-	if (file->type == GREAT	)
+	if (file->type == GREAT)
 	{
 		fd[1] = open(file->redirect, O_RDWR | O_CREAT | O_TRUNC, 0644);
 		if (fd[1] < 0)
@@ -35,7 +35,7 @@ int	*out_file(t_redir *file,	int *fd)
 	return (fd);
 }
 
-int	*openfile_ut(t_redir *file,	int *fd)
+int	*openfile_ext(t_redir *file,	int *fd)
 {
 	fd = out_file(file, fd);
 	if (file->type == LESS)
@@ -54,9 +54,9 @@ int	*openfile_ut(t_redir *file,	int *fd)
 
 int	*openfile(t_cmd_tab *list)
 {
-	int		*fd;
+	int			*fd;
 	t_cmd_tab	*tmp;
-	t_redir	*fl;
+	t_redir		*fl;
 
 	tmp = list;
 	fl = tmp->redirs;
@@ -65,7 +65,7 @@ int	*openfile(t_cmd_tab *list)
 	fd[1] = 0;
 	while (fl)
 	{
-		fd = openfile_ut(fl, fd);
+		fd = openfile_ext(fl, fd);
 		if (!fd)
 			return (NULL);
 		fl = fl->next;
@@ -75,14 +75,19 @@ int	*openfile(t_cmd_tab *list)
 
 void	ft_execve(t_cmd_tab *list, t_vr *vr, char *cmderr)
 {
-	// char ft_strjoin1(ft_strjoin1("minishell : ", cmderr));
+	char	*errormsg;
+	char	*tmp;
+
 	if (!in_builtin(list))
-	{	
+	{
 		if (execve(list->cmd[0], list->cmd, vr->env) < 0)
 		{
-			ft_error(ft_strjoin1(ft_strjoin1("minishell : ", cmderr),
-					" :command not found\n"), 127);
+			tmp = ft_strjoin("minishell : ", cmderr);
+			errormsg = ft_strjoin(tmp, " :command not found\n");
+			ft_error(errormsg, 127);
 			free (cmderr);
+			free(tmp);
+			free(errormsg);
 			exit (127);
 		}
 	}
