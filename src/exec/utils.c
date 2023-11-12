@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
+/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:23 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/11 03:47:27 by nasrollahkh      ###   ########.fr       */
+/*   Updated: 2023/11/12 02:17:14 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	**add_to_export(char **env, char *elmnt)
 	i = 0;
 	while (env[i++])
 		;
-	s_env = malloc(sizeof(char *) * i + 1);
+	s_env = malloc(sizeof(char *) * (i + 1));
 	if (!s_env)
 		ft_error("allocation faild\n", 1);
 	i = -1;

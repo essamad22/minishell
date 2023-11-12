@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 00:56:32 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 02:27:06 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,21 @@ int	check_cmd(char *cmd)
 	return (1);
 }
 
-void    print_export(char *s, int fd)
+void print_export(char *s, int fd)
 {
-    int        i;
+    int i = 0;
+    int l = 0;
 
-    i = 0;
-    while (s[i] && s[i] != '=')
-        ft_putchar_fd(s[i++], fd);
-    if (s[i])
+    while (s[i] && (i == 0 || s[i - 1] != '='))
     {
-        i++;
+        if (s[i] == '\0')
+            break;
+        ft_putchar_fd(s[i++], fd);
+    }
+    l = i - 1;
+
+    if (s[l] == '=')
+    {
         ft_putchar_fd('\"', fd);
         while (s[i])
             ft_putchar_fd(s[i++], fd);
