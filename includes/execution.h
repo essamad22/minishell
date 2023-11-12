@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:39 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 13:58:39 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 22:14:01 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "minishell.h"
 # include "parser.h"
+# include "lexer.h"
+# include <signal.h>
 
 typedef struct s_v
 {
@@ -113,5 +115,7 @@ int				word_hd(t_item **list, char *cmd_line, int *stat);
 void			join_after_expand(t_item **tokens);
 int				file_inquotes(char *file);
 void					free_vr(t_vr *vr);
+int             ft_exitstatus(int status);
+void            handle_sigint(int sigint);
 
 #endif

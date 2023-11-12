@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 06:01:06 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 18:20:40 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 22:15:38 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	set_data(int ac, char **av, char **env)
 void	handle_sigint(int sigint)
 {
 	(void)sigint;
-	g_data.exit_status = 1;
+	g_data.exit_status = 130;
 	if (g_data.flag)
 	{
 		g_data.exitheredoc = 1;
@@ -46,9 +46,10 @@ void	handle_sigint(int sigint)
 	else
 	{
 		if (!g_data.h_sig)
-			printf("\n");
-		rl_on_new_line();
-		rl_redisplay();
+		    write(1, "\n", 1);
+        rl_replace_line("", 0);
+        rl_on_new_line();
+        rl_redisplay();
 	}
 }
 

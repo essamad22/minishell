@@ -6,11 +6,12 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:07 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 13:11:20 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 21:57:35 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+#include <signal.h>
 
 int	heredoc_utls(t_v v)
 {
@@ -28,19 +29,18 @@ int	heredoc(char *file_name, int in_quote)
 
 	g_data.flag = 1;
 	g_data.h_sig = 1;
+    signal(SIGQUIT, SIG_DFL);
 	if (pipe(v.fd) < 0)
 		ft_error("Permission denied\n", 1);
 	v.rd = readline(">");
 	while (1)
 	{
-		if (!v.rd)
+		if (!v.rd || !ft_strncmp(v.rd, file_name, v.len_h))
 			break ;
 		if (ft_strlen(file_name) > ft_strlen(v.rd))
 			v.len_h = ft_strlen(file_name);
 		else
 			v.len_h = ft_strlen(v.rd);
-		if (!ft_strncmp(v.rd, file_name, v.len_h))
-			break ;
 		if (in_quote == 0 && ft_strlen(v.rd) > 0 && g_data.empty_quote == 0)
 			v.rd = lexer_heredoc(v.rd);
 		ft_putstr_fd(v.rd, v.fd[1]);

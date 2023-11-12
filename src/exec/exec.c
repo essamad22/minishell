@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:51 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 12:04:40 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:20:01 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	*exec_pipe_ext(t_cmd_tab *list, t_exec_p *exec, t_vr *vr, int pipe_num)
 	}
 	else if (list->cmd[0] && !g_data.exitheredoc && !g_data.rd_error)
 	{
-		signal(SIGINT, SIG_IGN);
+		signal(SIGINT, &handle_sigint);
 		exec->pid = fork();
 		if (exec->pid == 0)
 			ft_child(list, vr, exec);

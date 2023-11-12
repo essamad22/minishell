@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 21:45:17 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 18:51:00 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 21:31:42 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void	check_redir_err(t_item **tokens)
 		else if (tmp->type == APPEND && tmp->state == GENERAL
 			&& tmp->next->type != WORD && tmp->next->state == GENERAL)
 			return ((void)(g_data.syntax_error = -5));
-		else if (tmp->type == HEREDOC && tmp->state == GENERAL
-			&& tmp->next->type != WORD && tmp->next->state == GENERAL)
+		else if (tmp->type == HEREDOC && tmp->state == GENERAL 
+            && !g_data.empty_quote && tmp->next->type != WORD 
+            && tmp->next->state == GENERAL)
 			return ((void)(g_data.syntax_error = -5));
 		tmp = tmp->next;
 	}
@@ -48,7 +49,7 @@ void	syntax_error(t_item **tokens)
 	else if (g_data.syntax_error == -4)
 		ft_error("minishell: syntax error near unexpected token `newline'\n",
 			2);
-	else if (g_data.syntax_error == -5)
+	else if (g_data.syntax_error == -5 && g_data.empty_quote == 0)
 		ft_error("minishell: syntax error near unexpected token \n", 2);
 }
 
