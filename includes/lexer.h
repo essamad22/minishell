@@ -6,7 +6,7 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:39:52 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 13:45:36 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 16:44:47 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef enum e_tokens
 	GREAT = '>',
 	LESS = '<',
 	NEW_LINE = '\n',
+    TILDE = '~',
 	QUOTE = '\'',
 	DQUOTE = '\"',
 	ENV = '$',

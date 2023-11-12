@@ -6,15 +6,17 @@
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:21:54 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 13:48:07 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 13:58:32 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-# include "lexer.h"
 # include "minishell.h"
+# include "lexer.h"
+
+typedef struct s_item    t_item;
 
 typedef struct s_redir
 {

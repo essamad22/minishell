@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+         #
+#    By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/02 21:21:50 by aakhtab           #+#    #+#              #
-#    Updated: 2023/11/12 12:18:53 by nkhachab         ###   ########.fr        #
+#    Updated: 2023/11/12 16:09:38 by aakhtab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,11 @@ SRCS			=	src/lexer/lexer.c src/lexer/tokens.c 	\
 					src/exec/ft_strjoin.c\
 					src/heredoc_utils.c\
 					src/syntax_err.c\
+					src/utils_3.c\
 
 OBJS			=	$(SRCS:.c=.o)
 
-CFLAGS			=	-Wall -Wextra -Werror -g3
-# -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
 NAME			=	minishell
 

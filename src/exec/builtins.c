@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:22 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 09:55:11 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:35:44 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,27 @@ t_vr	*fill_env2(char **envp)
 	int		i;
 
 	i = 0;
-	vr = malloc(sizeof(t_vr));
-	while (envp[i++])
-		;
-	vr->env = malloc(sizeof(char *) * i);
-	if (!vr->env)
-		ft_error("allocation faild\n", 1);
-	i = 0;
-	while (envp[i] != NULL)
-	{
-		vr->env[i] = ft_strdup(envp[i]);
-		i++;
-	}
-	vr->env[i] = NULL;
-	vr->envlen = i;
-	return (vr);
+    if (!envp || !(*envp))
+    {
+        vr = malloc(sizeof(t_vr));
+        vr->env = NULL;
+        return (vr);
+    }
+    vr = malloc(sizeof(t_vr));
+    while (envp[i++])
+        ;
+    vr->env = malloc(sizeof(char *) * i);
+    if (!vr->env)
+        ft_error("allocation faild\n", 1);
+    i = 0;
+    while (envp[i] != NULL)
+    {
+        vr->env[i] = ft_strdup(envp[i]);
+        i++;
+    }
+    vr->env[i] = NULL;
+    vr->envlen = i;
+    return (vr);
 }
 
 void	env2(char **cmd, t_vr *vr, int fd)
@@ -40,6 +46,11 @@ void	env2(char **cmd, t_vr *vr, int fd)
 	int	i;
 
 	i = 1;
+    if (!vr->env)
+    {
+        ft_error("env : no such file or directory\n", 127);
+        return ;
+    }
 	while (cmd[i])
 	{
 		ft_error("env : no such file or directory\n", 127);
