@@ -6,7 +6,7 @@
 /*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 16:01:17 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 09:48:35 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:15:59 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_data
     int         exit_status;
     int         heredoc;
     int         syntax_error;
+    int         empty_quote;
     char			*content; // added by Nasro
 	int	exitheredoc;
 	int	quit_flag;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:07 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 05:19:23 by nkhachab         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:02:31 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	heredoc(char *file_name, int in_quote)
 			v.len_h = ft_strlen(v.rd);
 		if (!ft_strncmp(v.rd, file_name, v.len_h))
 			break ;
-		if (in_quote == 0 && ft_strlen(v.rd) > 0)
+		if (in_quote == 0 && ft_strlen(v.rd) > 0 && g_data.empty_quote == 0)
 			v.rd = lexer_heredoc(v.rd);
 		ft_putstr_fd(v.rd, v.fd[1]);
 		ft_putstr_fd("\n", v.fd[1]);
@@ -108,3 +108,4 @@ void	echo(t_cmd_tab *list, int fd)
 		print_echo(list->cmd, fd);
 	g_data.exit_status = 0;
 }
+
