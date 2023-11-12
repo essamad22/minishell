@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 03:48:39 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 22:14:01 by aakhtab          ###   ########.fr       */
+/*   Created: 2023/11/12 22:29:51 by nasrollahkh       #+#    #+#             */
+/*   Updated: 2023/11/12 22:29:58 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void			export(t_cmd_tab *list, t_vr *vr, int fd);
 int				export_iterate(t_vr *vr, char *target);
 void			check_exp_env(char *cmd, t_vr *vr);
 char			*ft_strjoin01(char *s1, char *s2);
+char			*remove_plus(char *word);
+void			process_env_var(t_vr *vr, char *cmd);
 int				heredoc_utls(t_v v);
 // ------ edit in herdoc function -------
 // ------ add int in_quote to t_redir -------

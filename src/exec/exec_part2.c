@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_part2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:33 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 20:12:02 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 22:31:27 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	*openfile_ext(t_redir *file,	int *fd)
 		if (fd[0] < 0)
 		{
 			ft_error("minishell: No such file or directory\n", 1);
-            free(fd);
+			free(fd);
 			return (NULL);
 		}
 	}
@@ -68,10 +68,10 @@ int	*openfile(t_cmd_tab *list)
 	{
 		fd = openfile_ext(fl, fd);
 		if (!fd)
-        {
-            free(fd);
+		{
+			free(fd);
 			return (NULL);
-        }
+		}
 		fl = fl->next;
 	}
 	return (fd);

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:48:07 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 21:57:35 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 22:32:11 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-#include <signal.h>
 
 int	heredoc_utls(t_v v)
 {
@@ -29,7 +28,7 @@ int	heredoc(char *file_name, int in_quote)
 
 	g_data.flag = 1;
 	g_data.h_sig = 1;
-    signal(SIGQUIT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
 	if (pipe(v.fd) < 0)
 		ft_error("Permission denied\n", 1);
 	v.rd = readline(">");

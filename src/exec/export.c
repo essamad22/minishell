@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nasrollahkhachabi <nasrollahkhachabi@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:47:56 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 17:20:11 by aakhtab          ###   ########.fr       */
+/*   Updated: 2023/11/12 22:04:00 by nasrollahkh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ void	export(t_cmd_tab *list, t_vr *vr, int fd)
 	int	j;
 
 	i = 0;
-    if (!vr->env)
-        return ;
-    else 
-    {
-        while (list->cmd[++i])
-            check_exp_env(list->cmd[i], vr);
-        if (i == 1)
-        {
-            j = 0;
-            while (vr->env[++j])
-            {
-                ft_putstr_fd("declare -x ", fd);
-                print_export(vr->env[j], fd);
-                ft_putstr_fd("\n", fd);
-            }
-            g_data.exit_status = 0;
-        }
-    }
+	if (!vr->env)
+		return ;
+	else
+	{
+		while (list->cmd[++i])
+			check_exp_env(list->cmd[i], vr);
+		if (i == 1)
+		{
+			j = 0;
+			while (vr->env[++j])
+			{
+				ft_putstr_fd("declare -x ", fd);
+				print_export(vr->env[j], fd);
+				ft_putstr_fd("\n", fd);
+			}
+			g_data.exit_status = 0;
+		}
+	}
 }
 
 int	export_iterate(t_vr *vr, char *target)
@@ -84,11 +84,7 @@ void	handle_append_env(t_vr *vr, char *cmd, int l)
 	if (!ft_isalpha(cmd[0]) || !check_cmd(trimmed_word))
 		ft_error("not a valid identifier\n", 1);
 	else if (l == -1)
-	{
-		vr->env = add_to_export(vr->env, cmd);
-		add_env(&g_data.env_lst, new_env(cmd));
-		vr->envlen += 1;
-	}
+		process_env_var(vr, cmd);
 	else
 	{
 		new = ft_strjoin(vr->env[l], ft_strchr(cmd, '=') + 1);
