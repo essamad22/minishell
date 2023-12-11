@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   utils_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 03:00:53 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 13:50:26 by aakhtab          ###   ########.fr       */
+/*   Created: 2023/11/12 13:32:30 by aakhtab           #+#    #+#             */
+/*   Updated: 2023/11/12 13:38:29 by aakhtab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/minishell.h"
 
-long	ft_atoi(const char *str)
+void	free_vr(t_vr *vr)
 {
-	int		sign;
-	long	result;
-	int		i;
+	int	i;
 
-	result = 0;
-	sign = 1;
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	while (i < vr->envlen)
+		free(vr->env[i++]);
+	free(vr->env);
+	free(vr);
+}
+
+void	clear_data(t_cmd_tab **tmp)
+{
+	t_cmd_tab	*tmp2;
+
+	while ((*tmp))
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		ft_free_2d((*tmp)->cmd);
+		if ((*tmp)->redirs)
+			free_redir(&(*tmp)->redirs);
+		if ((*tmp)->file)
+			free_file(&(*tmp)->file);
+		tmp2 = (*tmp);
+		(*tmp) = (*tmp)->next;
+		free(tmp2);
 	}
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + str[i] - '0';
-		i++;
-	}
-	return (result * sign);
+	free(*tmp);
 }

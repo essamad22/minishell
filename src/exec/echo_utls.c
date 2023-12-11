@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   echo_utls.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakhtab <aakhtab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nkhachab <nkhachab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 17:26:48 by aakhtab           #+#    #+#             */
-/*   Updated: 2023/11/12 13:50:51 by aakhtab          ###   ########.fr       */
+/*   Created: 2023/11/10 03:47:29 by aakhtab           #+#    #+#             */
+/*   Updated: 2023/11/12 09:55:21 by nkhachab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-int	ft_strcmp(const char *s1, const char *s2)
+void	print_n_echo(char **cmd, int fd, int i)
 {
-	size_t	i;
-	int		diff;
-
-	i = 0;
-	diff = 0;
-	while (s1[i] || s2[i])
+	while (cmd[i])
 	{
-		diff = (unsigned char)s1[i] - (unsigned char)s2[i];
-		if (diff != 0)
-			return (diff);
-		i++;
+		ft_putstr_fd(cmd[i++], fd);
+		if (cmd[i])
+			ft_putchar_fd(' ', fd);
 	}
-	return (diff);
 }
